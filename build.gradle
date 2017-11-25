@@ -16,5 +16,9 @@ dependencies {
 task release(type: Copy) {
     from project.getTasks().getByPath("impl:jar").outputs.files
     from project.getTasks().getByPath("api:jar").outputs.files
+    copy {
+        from project.getTasks().getByPath("api:javadoc").outputs.files
+        into "release/javadoc"
+    }
     into "release"
 }
