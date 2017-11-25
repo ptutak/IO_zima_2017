@@ -12,3 +12,9 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+task release(type: Copy) {
+    from project.getTasks().getByPath("impl:jar").outputs.files
+    from project.getTasks().getByPath("api:jar").outputs.files
+    into "release"
+}
