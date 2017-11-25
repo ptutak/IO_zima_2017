@@ -2,7 +2,8 @@
 
 ## Instrukcja obsługi projektu
 ### Importowanie projektu
-Aby zaimportować projekt użyjcie **InteliJ Idea -> File -> Open** oraz wybierzcie folder z projektem
+Aby zaimportować projekt użyjcie **InteliJ Idea -> File -> Open** oraz wybierzcie folder z projektem.
+W lewym dolnym rogu powinno wyskoczyć okienko **Import Gradle project** naciśnijcie na nie, a następnie klikajcie OK do skutku.
 
 ### Struktura projektu
 * Diagramy znajdują się w folderze **diagrams**
