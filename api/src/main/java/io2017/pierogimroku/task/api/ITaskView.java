@@ -7,5 +7,5 @@ package io2017.pierogimroku.task.api;
 /**
  * Provides functionality of retrieving tasks from task container/database
  */
-public interface TaskView {
+public interface ITaskView {
 }
