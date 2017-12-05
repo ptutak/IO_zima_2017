@@ -19,4 +19,7 @@ public interface ITaskManager {
      * @param b składnik
      */
     public int sum(int a, int b);
+    int addTask(Task task);
+    void removeTask(int id) throws  TaskNotFoundException;
+    void editTask(Task task) throws TaskNotFoundException;
 }
