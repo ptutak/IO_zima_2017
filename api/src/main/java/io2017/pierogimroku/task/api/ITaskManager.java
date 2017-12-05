@@ -10,16 +10,35 @@ package io2017.pierogimroku.task.api;
 public interface ITaskManager {
 
     /**
-     * To jest przykładowy javadoc do funkcji<br>
-     * Można używać <b>znaczników html</b>
-     * Opisujcie po angielsku (usuncie tą funkcje i komentarz)
-     *
-     * @return sumę argumentów
-     * @param a składnik
-     * @param b składnik
+     * Add task, id parameter in Task wrapper is ignored
+     * @param task
+     * @return id of the task
+     * @throws TaskContainerException on failure
      */
-    public int sum(int a, int b);
-    int addTask(Task task);
-    void removeTask(int id) throws  TaskNotFoundException;
-    void editTask(Task task) throws TaskNotFoundException;
+    int addTask(Task task) throws TaskContainerException;
+
+    /**
+     * Removes task
+     * @param id of task to remove
+     * @throws TaskNotFoundException where there is no task with given id
+     * @throws TaskContainerException on failure
+     */
+    void removeTask(int id) throws  TaskContainerException;
+
+    /**
+     * Edits task
+     * @param task - new task to be replaced, Task id should be set
+     * @throws TaskNotFoundException where there is no task with given id
+     * @throws TaskContainerException on failure
+     */
+    void editTask(Task task) throws TaskContainerException;
+
+    /**
+     * Assigns employee to task
+     * @param taskId id of task
+     * @param assigneeId id of employee
+     * @throws TaskNotFoundException where there is no task with given id
+     * @throws TaskContainerException on failure
+     */
+    void assignToTask(int taskId, int assigneeId) throws TaskContainerException;
 }
