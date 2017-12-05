@@ -15,13 +15,14 @@ public class Task {
     }
     private Integer id;
     private String name;
+    private String description;
     private int ownerId;
     private int assignedId;
     private Date startDate;
     private int timeEstimate;
     private int priority;
     private Status status;
-    private String description;
+
 
 
     /**
@@ -165,7 +166,7 @@ public class Task {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public Task(int id, String name,int ownerId, int assignedId, Date startDate, int timeEstimate,  int priority,  String description) {
+    public Task(int id, String name, String description,int ownerId, int assignedId, Date startDate, int timeEstimate,  int priority) {
         this.name = name;
         this.id = id;
         this.description = description;
@@ -188,7 +189,7 @@ public class Task {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public Task(String name, String description, Date startDate, int timeEstimate, int ownerId, int assignedId, int priority) {
+    public Task(String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
