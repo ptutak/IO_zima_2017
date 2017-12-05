@@ -1,0 +1,30 @@
+group 'io2017.pierogimroku.task'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task documentation(dependsOn: "api:javadoc", type: Copy){
+    from project.getTasks().getByPath("api:javadoc").outputs.files
+    into "release/javadoc"
+}
+
+task generateArtifacts(dependsOn: ["impl:jar","api:jar"], type: Copy) {
+    from project.getTasks().getByPath("impl:jar").outputs.files
+    from project.getTasks().getByPath("api:jar").outputs.files
+    into "release"
+}
+
+task release(dependsOn: [generateArtifacts,documentation]){
+
+}
+
