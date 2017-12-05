@@ -21,6 +21,7 @@ task documentation(dependsOn: "api:javadoc", type: Copy){
 task generateArtifacts(dependsOn: ["impl:jar","api:jar"], type: Copy) {
     from project.getTasks().getByPath("impl:jar").outputs.files
     from project.getTasks().getByPath("api:jar").outputs.files
+    from project.getTasks().getByPath("mock:jar").outputs.files
     into "release"
 }
 
