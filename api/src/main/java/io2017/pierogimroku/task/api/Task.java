@@ -13,15 +13,15 @@ public class Task {
     public enum Status{
         NEW,FINISHED,ASSIGNED,IN_REVIEW,UNDER_IMPLEMENTATION
     }
-    private String name;
     private Integer id;
-    private String description;
-    private Date startDate;
-    private int timeEstimate;
+    private String name;
     private int ownerId;
     private int assignedId;
-    private Status status;
+    private Date startDate;
+    private int timeEstimate;
     private int priority;
+    private Status status;
+    private String description;
 
 
     /**
@@ -165,7 +165,7 @@ public class Task {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public Task(String name, int id, String description, Date startDate, int timeEstimate, int ownerId, int assignedId, int priority) {
+    public Task(int id, String name,int ownerId, int assignedId, Date startDate, int timeEstimate,  int priority,  String description) {
         this.name = name;
         this.id = id;
         this.description = description;
