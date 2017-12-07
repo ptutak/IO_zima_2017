@@ -2,10 +2,9 @@ package io2017.pierogimroku.task;
 
 import io2017.pierogimroku.task.api.ITaskManager;
 import io2017.pierogimroku.task.api.ITaskView;
-import io2017.pierogimroku.task.api.Task;
+import io2017.pierogimroku.task.api.TaskWrapper;
 import io2017.pierogimroku.task.api.TaskNotFoundException;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,55 +22,55 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     private final String TAG = this.getClass().getName();
 
     @Override
-    public List<Task> searchTaskByAssignedEmployee(int employeeId) {
+    public List<TaskWrapper> searchTaskByAssignedEmployee(int employeeId) {
         System.err.println(TAG+": Searching Tasks by assigned employee "+ employeeId);
-        List<Task> taskList = new LinkedList<>();
-        taskList.add(new Task("Some Task",1,"Something", null, 10, employeeId, employeeId, 100));
-        return taskList;
+        List<TaskWrapper> taskWrapperList = new LinkedList<>();
+        taskWrapperList.add(new TaskWrapper("Some TaskWrapper","Something",10,1, null,  employeeId, 100));
+        return taskWrapperList;
     }
 
     @Override
-    public List<Task> search(String phrase) {
+    public List<TaskWrapper> search(String phrase) {
         System.err.println(TAG+": Searching Tasks by phrase "+phrase);
-        List<Task> taskList = new LinkedList<>();
-        taskList.add(new Task("Some Task",1,phrase, null, 10, 1, 1,100));
-        return taskList;
+        List<TaskWrapper> taskWrapperList = new LinkedList<>();
+        taskWrapperList.add(new TaskWrapper("Some TaskWrapper",phrase,10,1, null,  1, 100));
+        return taskWrapperList;
     }
 
     @Override
-    public List<Task> searchTaskByOwnerEmployee(int employeeId) {
+    public List<TaskWrapper> searchTaskByOwnerEmployee(int employeeId) {
         System.err.println(TAG+": Searching Tasks by owner id "+employeeId);
-        List<Task> taskList = new LinkedList<>();
-        taskList.add(new Task("Some Task",1,"Something", null, 10, employeeId, employeeId, 100));
-        return taskList;
+        List<TaskWrapper> taskWrapperList = new LinkedList<>();
+        taskWrapperList.add(new TaskWrapper("Some TaskWrapper","Something",10,1, null,  employeeId, 100));
+        return taskWrapperList;
     }
 
     @Override
-    public List<Task> getAll() {
+    public List<TaskWrapper> getAll() {
         System.err.println(TAG+": Searching all Tasks");
-        List<Task> taskList = new LinkedList<>();
-        taskList.add(new Task("Some Task",1,"Something", null, 10, 1, 1, 100));
-        return taskList;
+        List<TaskWrapper> taskWrapperList = new LinkedList<>();
+        taskWrapperList.add(new TaskWrapper("Some TaskWrapper","Something", 10, 1,null,  1, 100));
+        return taskWrapperList;
     }
 
     @Override
-    public int addTask(Task task) {
-        System.err.println(TAG+": Task added " + task.toString());
-        return task.getId();
+    public int addTask(TaskWrapper taskWrapper) {
+        System.err.println(TAG+": TaskWrapper added " + taskWrapper.toString());
+        return taskWrapper.getId();
     }
 
     @Override
-    public void removeTask(int id) throws TaskNotFoundException {
-        System.err.println(TAG+": Task removed " + id);
+    public void removeTask(TaskWrapper taskWrapper) throws TaskNotFoundException {
+        System.err.println(TAG+": TaskWrapper removed " + taskWrapper.getId());
     }
 
     @Override
-    public void editTask(Task task) throws TaskNotFoundException {
-        System.err.println(TAG+": Task edited " + task.toString());
+    public void editTask(TaskWrapper taskWrapper) throws TaskNotFoundException {
+        System.err.println(TAG+": TaskWrapper edited " + taskWrapper.toString());
     }
 
     @Override
-    public void assignToTask(int taskId, int assigneeId) throws TaskNotFoundException {
-        System.err.println(TAG+": Task "+taskId+" assigned to "+assigneeId);
+    public void assignToTask(TaskWrapper taskWrapper) throws TaskNotFoundException {
+        System.err.println(TAG+": TaskWrapper "+ taskWrapper.getId()+" assigned to "+ taskWrapper.getAssignedId());
     }
 }

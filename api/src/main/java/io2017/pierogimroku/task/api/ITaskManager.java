@@ -10,35 +10,34 @@ package io2017.pierogimroku.task.api;
 public interface ITaskManager {
 
     /**
-     * Add task, id parameter in Task wrapper is ignored
-     * @param task
-     * @return id of the task
+     * Add taskWrapper, id parameter in TaskWrapper wrapper is ignored
+     * @param taskWrapper wrapped task data
+     * @return id of the taskWrapper
      * @throws TaskContainerException on failure
      */
-    int addTask(Task task) throws TaskContainerException;
+    int addTask(TaskWrapper taskWrapper) throws TaskContainerException;
 
     /**
      * Removes task
-     * @param id of task to remove
-     * @throws TaskNotFoundException where there is no task with given id
+     * @param taskWrapper wrapped task data
      * @throws TaskContainerException on failure
+     * @throws TaskNotFoundException when task is not found
      */
-    void removeTask(int id) throws  TaskContainerException;
+    void removeTask(TaskWrapper taskWrapper) throws  TaskContainerException, TaskNotFoundException;
 
     /**
-     * Edits task
-     * @param task - new task to be replaced, Task id should be set
-     * @throws TaskNotFoundException where there is no task with given id
+     * Edits taskWrapper
+     * @param taskWrapper - new taskWrapper to be replaced, TaskWrapper id should be set
+     * @throws TaskNotFoundException where there is no taskWrapper with given id
      * @throws TaskContainerException on failure
      */
-    void editTask(Task task) throws TaskContainerException;
+    void editTask(TaskWrapper taskWrapper) throws TaskContainerException, TaskNotFoundException;
 
     /**
-     * Assigns employee to task
-     * @param taskId id of task
-     * @param assigneeId id of employee
+     * Assigns employee to task. It will only update the task parameter in storage.
+     * @param taskWrapper wrapped task data
      * @throws TaskNotFoundException where there is no task with given id
      * @throws TaskContainerException on failure
      */
-    void assignToTask(int taskId, int assigneeId) throws TaskContainerException;
+    void assignToTask(TaskWrapper taskWrapper) throws TaskContainerException, TaskNotFoundException;
 }

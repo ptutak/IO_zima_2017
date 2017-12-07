@@ -1,6 +1,9 @@
 package io2017.pierogimroku.task.api;
 
-public class TaskNotFoundException extends TaskContainerException {
+/**
+ * Thrown when requested task is not found
+ */
+public class TaskNotFoundException extends Exception {
     public TaskNotFoundException() {
     }
 

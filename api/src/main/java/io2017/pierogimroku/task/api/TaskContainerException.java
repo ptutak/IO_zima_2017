@@ -1,5 +1,8 @@
 package io2017.pierogimroku.task.api;
 
+/**
+ * Thrown on container failure
+ */
 public class TaskContainerException extends RuntimeException{
     public TaskContainerException() {
     }

@@ -13,44 +13,43 @@ import java.util.List;
  */
 public class ORMLiteTaskManager implements ITaskManager, ITaskView {
 
-
     @Override
-    public int addTask(Task task) throws TaskContainerException {
+    public int addTask(TaskWrapper taskWrapper) throws TaskContainerException {
         return 0;
     }
 
     @Override
-    public void removeTask(int id) throws TaskContainerException {
+    public void removeTask(TaskWrapper taskWrapper) throws TaskContainerException, TaskNotFoundException {
 
     }
 
     @Override
-    public void editTask(Task task) throws TaskContainerException {
+    public void editTask(TaskWrapper taskWrapper) throws TaskContainerException, TaskNotFoundException {
 
     }
 
     @Override
-    public void assignToTask(int taskId, int assigneeId) throws TaskContainerException {
+    public void assignToTask(TaskWrapper taskWrapper) throws TaskContainerException, TaskNotFoundException {
 
     }
 
     @Override
-    public List<Task> searchTaskByAssignedEmployee(int employeeId) throws TaskContainerException {
+    public List<TaskWrapper> searchTaskByAssignedEmployee(int employeeId) throws TaskContainerException {
         return null;
     }
 
     @Override
-    public List<Task> search(String phrase) throws TaskContainerException {
+    public List<TaskWrapper> search(String phrase) throws TaskContainerException {
         return null;
     }
 
     @Override
-    public List<Task> searchTaskByOwnerEmployee(int employeeId) throws TaskContainerException {
+    public List<TaskWrapper> searchTaskByOwnerEmployee(int employeeId) throws TaskContainerException {
         return null;
     }
 
     @Override
-    public List<Task> getAll() throws TaskContainerException {
+    public List<TaskWrapper> getAll() throws TaskContainerException {
         return null;
     }
 }

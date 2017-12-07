@@ -4,9 +4,9 @@ import java.util.Date;
 
 
 /**
- * Task wrapper
+ * TaskWrapper wrapper, represents results of database state in the moment of query
  */
-public class Task {
+public class TaskWrapper {
     /**
      * Status of the task
      */
@@ -34,7 +34,7 @@ public class Task {
 
     /**
      * Sets name of the task
-     * @param name
+     * @param name name to be set
      */
     public void setName(String name) {
         this.name = name;
@@ -56,7 +56,7 @@ public class Task {
 
     /**
      * Sets description
-     * @param description
+     * @param description description to be set
      */
     public void setDescription(String description) {
         this.description = description;
@@ -72,7 +72,7 @@ public class Task {
 
     /**
      * Sets start date
-     * @param startDate
+     * @param startDate start date to be set
      */
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
@@ -102,7 +102,7 @@ public class Task {
 
     /**
      * Sets id of owner
-     * @param ownerId
+     * @param ownerId owner id to be set
      */
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
@@ -117,7 +117,7 @@ public class Task {
 
     /**
      * Assigns new employee
-     * @param assignedId
+     * @param assignedId assignee id to be set
      */
     public void setAssignedId(int assignedId) {
         this.assignedId = assignedId;
@@ -148,7 +148,7 @@ public class Task {
 
     /**
      * Changes priority of the task
-     * @param priority
+     * @param priority new priority
      */
     public void setPriority(int priority) {
         this.priority = priority;
@@ -166,7 +166,7 @@ public class Task {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public Task(int id, String name, String description,int ownerId, int assignedId, Date startDate, int timeEstimate,  int priority) {
+    public TaskWrapper(int id, String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
         this.name = name;
         this.id = id;
         this.description = description;
@@ -189,7 +189,7 @@ public class Task {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public Task(String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
+    public TaskWrapper(String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
@@ -203,7 +203,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "TaskWrapper{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", description='" + description + '\'' +
