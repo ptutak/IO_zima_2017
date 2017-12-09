@@ -25,7 +25,14 @@ task generateArtifacts(dependsOn: ["impl:jar","api:jar"], type: Copy) {
     into "release"
 }
 
-task release(dependsOn: [generateArtifacts,documentation]){
+task copyImplLibs(type: Copy) {
+
+    into "release"
+    from project(":impl").configurations.compile
+
+}
+
+task release(dependsOn: [generateArtifacts,documentation,copyImplLibs]){
 
 }
 

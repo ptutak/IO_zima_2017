@@ -8,8 +8,6 @@ import com.j256.ormlite.table.TableUtils;
 import io2017.pierogimroku.task.storage.entity.Task;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +17,7 @@ import java.util.List;
  */
 
 public class QueryManager {
-    private final String databaseUrl;// = "jdbc:sqlite:taskdatabase";
+    private final String databaseUrl;
     private final ConnectionSource connectionSource;
     private final Dao<Task, String> taskDao;
 
