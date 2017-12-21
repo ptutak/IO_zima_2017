@@ -121,25 +121,25 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../io2017/pierogimroku/task/api/ITaskManager.html#addTask-io2017.pierogimroku.task.api.TaskWrapper-">addTask</a></span>(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskWrapper)</code>
-<div class="block">Add taskWrapper, id parameter in TaskWrapper wrapper is ignored</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../io2017/pierogimroku/task/api/ITaskManager.html#addTask-io2017.pierogimroku.task.api.TaskLook-">addTask</a></span>(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskLook)</code>
+<div class="block">Add taskLook, id parameter in TaskWrapper wrapper is ignored</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../io2017/pierogimroku/task/api/ITaskManager.html#assignToTask-io2017.pierogimroku.task.api.TaskWrapper-">assignToTask</a></span>(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskWrapper)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../io2017/pierogimroku/task/api/ITaskManager.html#assignToTask-io2017.pierogimroku.task.api.TaskLook-">assignToTask</a></span>(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskLook)</code>
 <div class="block">Assigns employee to task.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../io2017/pierogimroku/task/api/ITaskManager.html#editTask-io2017.pierogimroku.task.api.TaskWrapper-">editTask</a></span>(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskWrapper)</code>
-<div class="block">Edits taskWrapper</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../io2017/pierogimroku/task/api/ITaskManager.html#editTask-io2017.pierogimroku.task.api.TaskLook-">editTask</a></span>(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskLook)</code>
+<div class="block">Edits taskLook</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../io2017/pierogimroku/task/api/ITaskManager.html#removeTask-io2017.pierogimroku.task.api.TaskWrapper-">removeTask</a></span>(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskWrapper)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../io2017/pierogimroku/task/api/ITaskManager.html#removeTask-io2017.pierogimroku.task.api.TaskLook-">removeTask</a></span>(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskLook)</code>
 <div class="block">Removes task</div>
 </td>
 </tr>
@@ -158,76 +158,76 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="addTask-io2017.pierogimroku.task.api.TaskWrapper-">
+<a name="addTask-io2017.pierogimroku.task.api.TaskLook-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>addTask</h4>
-<pre>int&nbsp;addTask(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskWrapper)
+<pre>int&nbsp;addTask(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskLook)
      throws <a href="../../../../io2017/pierogimroku/task/api/TaskContainerException.html" title="class in io2017.pierogimroku.task.api">TaskContainerException</a></pre>
-<div class="block">Add taskWrapper, id parameter in TaskWrapper wrapper is ignored</div>
+<div class="block">Add taskLook, id parameter in TaskWrapper wrapper is ignored</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>taskWrapper</code> - wrapped task data</dd>
+<dd><code>taskLook</code> - wrapped task data</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>id of the taskWrapper</dd>
+<dd>id of the taskLook</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../io2017/pierogimroku/task/api/TaskContainerException.html" title="class in io2017.pierogimroku.task.api">TaskContainerException</a></code> - on failure</dd>
 </dl>
 </li>
 </ul>
-<a name="removeTask-io2017.pierogimroku.task.api.TaskWrapper-">
+<a name="removeTask-io2017.pierogimroku.task.api.TaskLook-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>removeTask</h4>
-<pre>void&nbsp;removeTask(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskWrapper)
+<pre>void&nbsp;removeTask(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskLook)
          throws <a href="../../../../io2017/pierogimroku/task/api/TaskContainerException.html" title="class in io2017.pierogimroku.task.api">TaskContainerException</a>,
                 <a href="../../../../io2017/pierogimroku/task/api/TaskNotFoundException.html" title="class in io2017.pierogimroku.task.api">TaskNotFoundException</a></pre>
 <div class="block">Removes task</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>taskWrapper</code> - wrapped task data</dd>
+<dd><code>taskLook</code> - wrapped task data</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../io2017/pierogimroku/task/api/TaskContainerException.html" title="class in io2017.pierogimroku.task.api">TaskContainerException</a></code> - on failure</dd>
 <dd><code><a href="../../../../io2017/pierogimroku/task/api/TaskNotFoundException.html" title="class in io2017.pierogimroku.task.api">TaskNotFoundException</a></code> - when task is not found</dd>
 </dl>
 </li>
 </ul>
-<a name="editTask-io2017.pierogimroku.task.api.TaskWrapper-">
+<a name="editTask-io2017.pierogimroku.task.api.TaskLook-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>editTask</h4>
-<pre>void&nbsp;editTask(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskWrapper)
+<pre>void&nbsp;editTask(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskLook)
        throws <a href="../../../../io2017/pierogimroku/task/api/TaskContainerException.html" title="class in io2017.pierogimroku.task.api">TaskContainerException</a>,
               <a href="../../../../io2017/pierogimroku/task/api/TaskNotFoundException.html" title="class in io2017.pierogimroku.task.api">TaskNotFoundException</a></pre>
-<div class="block">Edits taskWrapper</div>
+<div class="block">Edits taskLook</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>taskWrapper</code> - - new taskWrapper to be replaced, TaskWrapper id should be set</dd>
+<dd><code>taskLook</code> - - new taskLook to be replaced, TaskWrapper id should be set</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../../../../io2017/pierogimroku/task/api/TaskNotFoundException.html" title="class in io2017.pierogimroku.task.api">TaskNotFoundException</a></code> - where there is no taskWrapper with given id</dd>
+<dd><code><a href="../../../../io2017/pierogimroku/task/api/TaskNotFoundException.html" title="class in io2017.pierogimroku.task.api">TaskNotFoundException</a></code> - where there is no taskLook with given id</dd>
 <dd><code><a href="../../../../io2017/pierogimroku/task/api/TaskContainerException.html" title="class in io2017.pierogimroku.task.api">TaskContainerException</a></code> - on failure</dd>
 </dl>
 </li>
 </ul>
-<a name="assignToTask-io2017.pierogimroku.task.api.TaskWrapper-">
+<a name="assignToTask-io2017.pierogimroku.task.api.TaskLook-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>assignToTask</h4>
-<pre>void&nbsp;assignToTask(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskWrapper)
+<pre>void&nbsp;assignToTask(<a href="../../../../io2017/pierogimroku/task/api/TaskWrapper.html" title="class in io2017.pierogimroku.task.api">TaskWrapper</a>&nbsp;taskLook)
            throws <a href="../../../../io2017/pierogimroku/task/api/TaskContainerException.html" title="class in io2017.pierogimroku.task.api">TaskContainerException</a>,
                   <a href="../../../../io2017/pierogimroku/task/api/TaskNotFoundException.html" title="class in io2017.pierogimroku.task.api">TaskNotFoundException</a></pre>
 <div class="block">Assigns employee to task. It will only update the task parameter in storage.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>taskWrapper</code> - wrapped task data</dd>
+<dd><code>taskLook</code> - wrapped task data</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../io2017/pierogimroku/task/api/TaskNotFoundException.html" title="class in io2017.pierogimroku.task.api">TaskNotFoundException</a></code> - where there is no task with given id</dd>
 <dd><code><a href="../../../../io2017/pierogimroku/task/api/TaskContainerException.html" title="class in io2017.pierogimroku.task.api">TaskContainerException</a></code> - on failure</dd>

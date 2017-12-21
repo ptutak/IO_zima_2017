@@ -29,6 +29,8 @@ public class QueryManager {
     }
 
 
+
+
     public List<Task> searchTaskByAssignedEmployee(int emplyeeId) throws SQLException, IOException {
         List<Task> tmpList =
                 taskDao.query(
@@ -136,4 +138,5 @@ public class QueryManager {
             e.printStackTrace();
         }
     }
+
 }

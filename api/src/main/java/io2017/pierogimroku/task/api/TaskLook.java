@@ -4,15 +4,17 @@ import java.util.Date;
 
 
 /**
- * TaskWrapper wrapper, represents results of database state in the moment of query
+ * TaskLook represents a state of a Task at the query moment.
  */
-public class TaskWrapper {
+public class TaskLook {
     /**
      * Status of the task
      */
     public enum Status{
         NEW,FINISHED,ASSIGNED,IN_REVIEW,UNDER_IMPLEMENTATION
     }
+
+
     private Integer id;
     private String name;
     private String description;
@@ -46,6 +48,15 @@ public class TaskWrapper {
     public Integer getId() {
         return id;
     }
+
+    /**
+     * Sets id of the task
+     * @param id id to be set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 
     /**
      * @return description of the task
@@ -166,7 +177,7 @@ public class TaskWrapper {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public TaskWrapper(int id, String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
+    public TaskLook(int id, String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
         this.name = name;
         this.id = id;
         this.description = description;
@@ -189,7 +200,7 @@ public class TaskWrapper {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public TaskWrapper(String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
+    public TaskLook(String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
@@ -203,7 +214,7 @@ public class TaskWrapper {
 
     @Override
     public String toString() {
-        return "TaskWrapper{" +
+        return "TaskLook{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", description='" + description + '\'' +

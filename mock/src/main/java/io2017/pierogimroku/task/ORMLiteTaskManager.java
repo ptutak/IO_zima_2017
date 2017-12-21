@@ -2,7 +2,7 @@ package io2017.pierogimroku.task;
 
 import io2017.pierogimroku.task.api.ITaskManager;
 import io2017.pierogimroku.task.api.ITaskView;
-import io2017.pierogimroku.task.api.TaskWrapper;
+import io2017.pierogimroku.task.api.TaskLook;
 import io2017.pierogimroku.task.api.TaskNotFoundException;
 
 import java.util.LinkedList;
@@ -22,55 +22,55 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     private final String TAG = this.getClass().getName();
 
     @Override
-    public List<TaskWrapper> searchTaskByAssignedEmployee(int employeeId) {
+    public List<TaskLook> searchTaskByAssignedEmployee(int employeeId) {
         System.err.println(TAG+": Searching Tasks by assigned employee "+ employeeId);
-        List<TaskWrapper> taskWrapperList = new LinkedList<>();
-        taskWrapperList.add(new TaskWrapper("Some TaskWrapper","Something",10,1, null,  employeeId, 100));
-        return taskWrapperList;
+        List<TaskLook> taskLookList = new LinkedList<>();
+        taskLookList.add(new TaskLook("Some TaskLook","Something",10,1, null,  employeeId, 100));
+        return taskLookList;
     }
 
     @Override
-    public List<TaskWrapper> search(String phrase) {
+    public List<TaskLook> search(String phrase) {
         System.err.println(TAG+": Searching Tasks by phrase "+phrase);
-        List<TaskWrapper> taskWrapperList = new LinkedList<>();
-        taskWrapperList.add(new TaskWrapper("Some TaskWrapper",phrase,10,1, null,  1, 100));
-        return taskWrapperList;
+        List<TaskLook> taskLookList = new LinkedList<>();
+        taskLookList.add(new TaskLook("Some TaskLook",phrase,10,1, null,  1, 100));
+        return taskLookList;
     }
 
     @Override
-    public List<TaskWrapper> searchTaskByOwnerEmployee(int employeeId) {
+    public List<TaskLook> searchTaskByOwnerEmployee(int employeeId) {
         System.err.println(TAG+": Searching Tasks by owner id "+employeeId);
-        List<TaskWrapper> taskWrapperList = new LinkedList<>();
-        taskWrapperList.add(new TaskWrapper("Some TaskWrapper","Something",10,1, null,  employeeId, 100));
-        return taskWrapperList;
+        List<TaskLook> taskLookList = new LinkedList<>();
+        taskLookList.add(new TaskLook("Some TaskLook","Something",10,1, null,  employeeId, 100));
+        return taskLookList;
     }
 
     @Override
-    public List<TaskWrapper> getAll() {
+    public List<TaskLook> getAll() {
         System.err.println(TAG+": Searching all Tasks");
-        List<TaskWrapper> taskWrapperList = new LinkedList<>();
-        taskWrapperList.add(new TaskWrapper("Some TaskWrapper","Something", 10, 1,null,  1, 100));
-        return taskWrapperList;
+        List<TaskLook> taskLookList = new LinkedList<>();
+        taskLookList.add(new TaskLook("Some TaskLook","Something", 10, 1,null,  1, 100));
+        return taskLookList;
     }
 
     @Override
-    public int addTask(TaskWrapper taskWrapper) {
-        System.err.println(TAG+": TaskWrapper added " + taskWrapper.toString());
-        return taskWrapper.getId();
+    public int addTask(TaskLook taskLook) {
+        System.err.println(TAG+": TaskLook added " + taskLook.toString());
+        return taskLook.getId();
     }
 
     @Override
-    public void removeTask(TaskWrapper taskWrapper) throws TaskNotFoundException {
-        System.err.println(TAG+": TaskWrapper removed " + taskWrapper.getId());
+    public void removeTask(TaskLook taskLook) throws TaskNotFoundException {
+        System.err.println(TAG+": TaskLook removed " + taskLook.getId());
     }
 
     @Override
-    public void editTask(TaskWrapper taskWrapper) throws TaskNotFoundException {
-        System.err.println(TAG+": TaskWrapper edited " + taskWrapper.toString());
+    public void editTask(TaskLook taskLook) throws TaskNotFoundException {
+        System.err.println(TAG+": TaskLook edited " + taskLook.toString());
     }
 
     @Override
-    public void assignToTask(TaskWrapper taskWrapper) throws TaskNotFoundException {
-        System.err.println(TAG+": TaskWrapper "+ taskWrapper.getId()+" assigned to "+ taskWrapper.getAssignedId());
+    public void assignToTask(TaskLook taskLook) throws TaskNotFoundException {
+        System.err.println(TAG+": TaskLook "+ taskLook.getId()+" assigned to "+ taskLook.getAssignedId());
     }
 }

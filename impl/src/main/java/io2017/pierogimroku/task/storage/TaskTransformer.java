@@ -1,6 +1,6 @@
 package io2017.pierogimroku.task.storage;
 
-import io2017.pierogimroku.task.api.TaskWrapper;
+import io2017.pierogimroku.task.api.TaskLook;
 import io2017.pierogimroku.task.storage.entity.Task;
 
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TaskTransformer {
 
-    public static Task transformTaskWrapper(TaskWrapper wrapper){
+    public static Task transformTaskWrapper(TaskLook wrapper){
         Task t = new Task();
         t.setId(wrapper.getId());
         t.setAssignedId(wrapper.getAssignedId());
@@ -22,8 +22,8 @@ public class TaskTransformer {
         return t;
     }
 
-    public static TaskWrapper transformTask(Task task){
-        TaskWrapper wrapper = new TaskWrapper(
+    public static TaskLook transformTask(Task task){
+        TaskLook wrapper = new TaskLook(
                 task.getId(),
                 task.getName(),
                 task.getDescription(),
@@ -37,18 +37,18 @@ public class TaskTransformer {
         return wrapper;
     }
 
-    public static List<TaskWrapper> transformTaskList(List<Task> taskList){
-        List<TaskWrapper> taskWrapperList = new LinkedList<TaskWrapper>();
+    public static List<TaskLook> transformTaskList(List<Task> taskList){
+        List<TaskLook> taskLookList = new LinkedList<TaskLook>();
         for(Task task: taskList){
-            taskWrapperList.add(transformTask(task));
+            taskLookList.add(transformTask(task));
         }
-        return taskWrapperList;
+        return taskLookList;
     }
 
-    public static List<Task> transformTaskWrapperList(List<TaskWrapper> taskWrapperList){
+    public static List<Task> transformTaskWrapperList(List<TaskLook> taskLookList){
         List<Task> taskList = new LinkedList<Task>();
-        for(TaskWrapper taskWrapper: taskWrapperList){
-            taskList.add(transformTaskWrapper(taskWrapper));
+        for(TaskLook taskLook : taskLookList){
+            taskList.add(transformTaskWrapper(taskLook));
         }
         return taskList;
     }

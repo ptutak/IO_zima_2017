@@ -3,7 +3,7 @@ package io2017.pierogimroku.task.storage.entity;
 import java.util.Date;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import io2017.pierogimroku.task.api.TaskWrapper;
+import io2017.pierogimroku.task.api.TaskLook;
 
 @DatabaseTable(tableName = "tasks")
 public class Task {
@@ -41,7 +41,7 @@ public class Task {
 
     public static final String STATUS = "status";
     @DatabaseField(columnName = STATUS)
-    private TaskWrapper.Status status;
+    private TaskLook.Status status;
 
     public Task() {}
 
@@ -109,11 +109,11 @@ public class Task {
         this.priority = priority;
     }
 
-    public TaskWrapper.Status getStatus() {
+    public TaskLook.Status getStatus() {
         return status;
     }
 
-    public void setStatus(TaskWrapper.Status status) {
+    public void setStatus(TaskLook.Status status) {
         this.status = status;
     }
     @Override

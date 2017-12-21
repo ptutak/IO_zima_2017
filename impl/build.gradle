@@ -24,3 +24,8 @@ dependencies {
 jar{
     baseName 'taskmanager'
 }
+/*
+run{
+    standardInput = System.in
+}
+*/
