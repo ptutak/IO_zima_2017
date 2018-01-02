@@ -7,31 +7,12 @@ import io2017.pierogimroku.task.storage.TaskTransformer;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
 
 public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     private final String databaseName = "taskdatabase";
+    private String tempDatabaseName=null;
     private QueryManager queryManager;
-
-
-    public static void main(String[] argv){
-        ORMLiteTaskManager a = null;
-        try {
-            a = new ORMLiteTaskManager();
-        } catch (TaskContainerException e) {
-            e.printStackTrace();
-        }
-        try {
-            a.addTask(new TaskLook("asd","asdasd",1,2,null,1,2));
-        } catch (TaskContainerException e) {
-            e.printStackTrace();
-        }
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
     public ORMLiteTaskManager() throws TaskContainerException{
@@ -41,9 +22,18 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
             throw new TaskContainerException(e);
         }
     }
+    public ORMLiteTaskManager(String databaseName)throws TaskContainerException{
+        try {
+            queryManager = new QueryManager(databaseName);
+            this.tempDatabaseName=databaseName;
+        } catch(SQLException e) {
+            throw new TaskContainerException(e);
+        }
+    }
 
     @Override
     public Integer addTask(TaskLook taskLook) throws TaskContainerException {
+        taskLook.setId(null);
         try {
             return queryManager.addTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {

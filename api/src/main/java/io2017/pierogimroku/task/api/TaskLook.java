@@ -165,9 +165,72 @@ public class TaskLook {
         this.priority = priority;
     }
 
+    /**
+     * Creates empty task look
+     */
+    public TaskLook(){
+        this.id=null;
+        this.name=null;
+        this.description=null;
+        this.startDate=null;
+        this.timeEstimate=null;
+        this.ownerId=null;
+        this.assignedId=null;
+        this.status=null;
+        this.priority=null;
+    }
 
     /**
-     * Creates task status NEW
+     * Creates empty task look with id
+     * @param id
+     */
+    public TaskLook(Integer id){
+        this.id=id;
+        this.name=null;
+        this.description=null;
+        this.startDate=null;
+        this.timeEstimate=null;
+        this.ownerId=null;
+        this.assignedId=null;
+        this.status=null;
+        this.priority=null;
+    }
+
+    /**
+     * Creates empty task look with name
+     * @param name
+     */
+    public TaskLook(String name){
+        this.id=null;
+        this.name=name;
+        this.description=null;
+        this.startDate=null;
+        this.timeEstimate=null;
+        this.ownerId=null;
+        this.assignedId=null;
+        this.status=null;
+        this.priority=null;
+    }
+
+    /**
+     * Creates empty task look with name, ownerId, STATUS NEW, TODAY's DATE
+     * @param name
+     * @param ownerId
+     */
+    public TaskLook(String name, Integer ownerId){
+        this.id=null;
+        this.name=name;
+        this.ownerId=ownerId;
+        this.description=null;
+        this.startDate=new Date();
+        this.timeEstimate=null;
+        this.assignedId=null;
+        this.status=Status.NEW;
+        this.priority=null;
+    }
+
+    /**
+     * Creates task look status NEW
      * @param name - title
      * @param id - database id
      * @param description description
@@ -191,7 +254,7 @@ public class TaskLook {
     }
 
     /**
-     * Creates task with Status NEW, without id
+     * Creates task look with Status NEW, without id
      * @param name - title
      * @param description description
      * @param startDate starting date
