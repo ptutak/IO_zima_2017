@@ -2,4 +2,5 @@ rootProject.name = 'task'
 include ':api'
 include ':impl'
 include ':mock'
+include 'demo'
 
