@@ -1,11 +1,15 @@
 package io2017.pierogimroku.task;
 
+import com.j256.ormlite.logger.LocalLog;
 import io2017.pierogimroku.task.api.TaskContainerException;
 import io2017.pierogimroku.task.api.TaskLook;
 import io2017.pierogimroku.task.api.TaskNotFoundException;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public class ApiTester {
     public static ORMLiteTaskManager tm=null;
@@ -24,9 +28,9 @@ public class ApiTester {
         System.out.println("Task Name:");
         newTask.setName(stdin.nextLine());
         System.out.println("Task Owner Id:");
-        newTask.setOwnerId(stdin.nextInt());
+        newTask.setOwnerId(Integer.parseInt(stdin.nextLine()));
         System.out.println("Task Assigned Id:");
-        newTask.setAssignedId(stdin.nextInt());
+        newTask.setAssignedId(Integer.parseInt(stdin.nextLine()));
         System.out.println("Task Description:");
         newTask.setDescription(stdin.nextLine());
         tm.addTask(newTask);
@@ -34,7 +38,7 @@ public class ApiTester {
 
     public static void removeTask(){
         System.out.println("Task Id:");
-        TaskLook toRemove=new TaskLook(stdin.nextInt());
+        TaskLook toRemove=new TaskLook(Integer.parseInt(stdin.nextLine()));
         try {
             tm.removeTask(toRemove);
         } catch (TaskNotFoundException e) {
@@ -46,14 +50,14 @@ public class ApiTester {
         taskList();
         System.out.println("Choose task by Id:");
         System.out.println("Task Id:");
-        TaskLook editTask=new TaskLook(stdin.nextInt());
+        TaskLook editTask=new TaskLook(Integer.parseInt(stdin.nextLine()));
         System.out.println("Edit task properties:");
         System.out.println("Task Name:");
         editTask.setName(stdin.nextLine());
         System.out.println("Task Owner Id:");
-        editTask.setOwnerId(stdin.nextInt());
+        editTask.setOwnerId(Integer.parseInt(stdin.nextLine()));
         System.out.println("Task Assigned Id:");
-        editTask.setAssignedId(stdin.nextInt());
+        editTask.setAssignedId(Integer.parseInt(stdin.nextLine()));
         System.out.println("Task Description:");
         editTask.setDescription(stdin.nextLine());
         try {
@@ -69,21 +73,21 @@ public class ApiTester {
         System.out.println("2 - Name");
         System.out.println("3 - Owner Id");
         System.out.println("4 - Assigned Id");
-        int choice = stdin.nextInt();
+        int choice = Integer.parseInt(stdin.nextLine());
         TaskLook searchTask=new TaskLook();
         System.out.println("?Query:");
         switch (choice){
             case 1:
-                searchTask.setId(stdin.nextInt());
+                searchTask.setId(Integer.parseInt(stdin.nextLine()));
                 break;
             case 2:
                 searchTask.setName(stdin.nextLine());
                 break;
             case 3:
-                searchTask.setOwnerId(stdin.nextInt());
+                searchTask.setOwnerId(Integer.parseInt(stdin.nextLine()));
                 break;
             case 4 :
-                searchTask.setAssignedId(stdin.nextInt());
+                searchTask.setAssignedId(Integer.parseInt(stdin.nextLine()));
                 break;
         }
         List<TaskLook> list=tm.searchTaskByLook(searchTask);
@@ -92,17 +96,18 @@ public class ApiTester {
         }
     }
     public static void main(String[] argv){
+        System.setProperty(LocalLog.LOCAL_LOG_LEVEL_PROPERTY, "ERROR");
         int choice=1;
         System.out.println("Wybierz bazę danych:");
         String db=stdin.nextLine();
         try {
-            tm = new ORMLiteTaskManager(db);
+            tm = new ORMLiteTaskManager("build/tmp/"+db);
         } catch (TaskContainerException e) {
             e.printStackTrace();
         }
         while (choice!=0){
             System.out.println("Menu:\n1 - Lista tasków\n2 - Dodaj task\n3 - Usuń task\n4 - Edytuj task\n5 - Wyszukaj task\n0 - Koniec\n");
-            choice=stdin.nextInt();
+            choice=Integer.parseInt(stdin.nextLine());
             switch (choice) {
                 case 1:
                     taskList();

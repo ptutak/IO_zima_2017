@@ -2,8 +2,13 @@ group 'io2017.pierogimroku.task'
 version '1.0'
 
 apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName='io2017.pierogimroku.task.ApiTester'
 
 sourceCompatibility = 1.8
+
+
 
 repositories {
     mavenCentral()
@@ -24,8 +29,7 @@ dependencies {
 jar{
     baseName 'taskmanager'
 }
-/*
-run{
+
+run {
     standardInput = System.in
 }
-*/
