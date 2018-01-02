@@ -48,7 +48,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
         try {
             queryManager.removeTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {
-            throw new TaskContainerException(e);
+            throw new TaskNotFoundException(e);
         } catch (IOException e) {
             throw new TaskContainerException(e);
         }
@@ -59,7 +59,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
         try {
             queryManager.editTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {
-            throw new TaskContainerException(e);
+            throw new TaskNotFoundException(e);
         } catch (IOException e) {
             throw new TaskContainerException(e);
         }
@@ -70,7 +70,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
         try {
             queryManager.assignToTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {
-            throw new TaskContainerException(e);
+            throw new TaskNotFoundException(e);
         } catch (IOException e) {
             throw new TaskContainerException(e);
         }

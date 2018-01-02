@@ -182,7 +182,7 @@ public class TaskLook {
 
     /**
      * Creates empty task look with id
-     * @param id
+     * @param id id of a task
      */
     public TaskLook(Integer id){
         this.id=id;
@@ -198,7 +198,7 @@ public class TaskLook {
 
     /**
      * Creates empty task look with name
-     * @param name
+     * @param name name of a task
      */
     public TaskLook(String name){
         this.id=null;
@@ -214,8 +214,8 @@ public class TaskLook {
 
     /**
      * Creates empty task look with name, ownerId, STATUS NEW, TODAY's DATE
-     * @param name
-     * @param ownerId
+     * @param name name of a task
+     * @param ownerId task owner id
      */
     public TaskLook(String name, Integer ownerId){
         this.id=null;

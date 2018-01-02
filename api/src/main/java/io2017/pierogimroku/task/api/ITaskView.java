@@ -21,9 +21,9 @@ public interface ITaskView {
 
     /**
      * Searches tasks with a specific TaskLook
-     * @param taskLook
+     * @param taskLook look of a Task
      * @return List of tasks with a given TaskLook
-     * @throws TaskContainerException
+     * @throws TaskContainerException on failure
      */
     public List<TaskLook> searchTaskByLook(TaskLook taskLook) throws TaskContainerException;
 
