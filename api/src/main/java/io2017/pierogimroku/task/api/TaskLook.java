@@ -18,11 +18,11 @@ public class TaskLook {
     private Integer id;
     private String name;
     private String description;
-    private int ownerId;
-    private int assignedId;
+    private Integer ownerId;
+    private Integer assignedId;
     private Date startDate;
-    private int timeEstimate;
-    private int priority;
+    private Integer timeEstimate;
+    private Integer priority;
     private Status status;
 
 
@@ -92,7 +92,7 @@ public class TaskLook {
     /**
      * @return time estimate in hours
      */
-    public int getTimeEstimate() {
+    public Integer getTimeEstimate() {
         return timeEstimate;
     }
 
@@ -100,14 +100,14 @@ public class TaskLook {
      * Sets time estimate
      * @param timeEstimate in hours
      */
-    public void setTimeEstimate(int timeEstimate) {
+    public void setTimeEstimate(Integer timeEstimate) {
         this.timeEstimate = timeEstimate;
     }
 
     /**
      * @return id of owner
      */
-    public int getOwnerId() {
+    public Integer getOwnerId() {
         return ownerId;
     }
 
@@ -115,14 +115,14 @@ public class TaskLook {
      * Sets id of owner
      * @param ownerId owner id to be set
      */
-    public void setOwnerId(int ownerId) {
+    public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
     }
 
     /**
      * @return id of assigned employee
      */
-    public int getAssignedId() {
+    public Integer getAssignedId() {
         return assignedId;
     }
 
@@ -130,7 +130,7 @@ public class TaskLook {
      * Assigns new employee
      * @param assignedId assignee id to be set
      */
-    public void setAssignedId(int assignedId) {
+    public void setAssignedId(Integer assignedId) {
         this.assignedId = assignedId;
     }
 
@@ -153,7 +153,7 @@ public class TaskLook {
     /**
      * @return priority of the task
      */
-    public int getPriority() {
+    public Integer getPriority() {
         return priority;
     }
 
@@ -161,7 +161,7 @@ public class TaskLook {
      * Changes priority of the task
      * @param priority new priority
      */
-    public void setPriority(int priority) {
+    public void setPriority(Integer priority) {
         this.priority = priority;
     }
 
@@ -177,7 +177,7 @@ public class TaskLook {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public TaskLook(int id, String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
+    public TaskLook(Integer id, String name, String description, Integer ownerId, Integer assignedId, Date startDate, Integer timeEstimate, Integer priority) {
         this.name = name;
         this.id = id;
         this.description = description;
@@ -200,7 +200,7 @@ public class TaskLook {
      * @param assignedId id if employee assigned to the task
      * @param priority priority
      */
-    public TaskLook(String name, String description, int ownerId, int assignedId, Date startDate, int timeEstimate, int priority) {
+    public TaskLook(String name, String description, Integer ownerId, Integer assignedId, Date startDate, Integer timeEstimate, Integer priority) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;

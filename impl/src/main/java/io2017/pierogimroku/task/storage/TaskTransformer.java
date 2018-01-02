@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TaskTransformer {
 
-    public static Task transformTaskWrapper(TaskLook taskLook){
+    public static Task transformTaskLook(TaskLook taskLook){
         Task t = new Task();
         t.setId(taskLook.getId());
         t.setAssignedId(taskLook.getAssignedId());
@@ -45,10 +45,10 @@ public class TaskTransformer {
         return taskLookList;
     }
 
-    public static List<Task> transformTaskWrapperList(List<TaskLook> taskLookList){
+    public static List<Task> transformTaskLookList(List<TaskLook> taskLookList){
         List<Task> taskList = new LinkedList<Task>();
         for(TaskLook taskLook : taskLookList){
-            taskList.add(transformTaskWrapper(taskLook));
+            taskList.add(transformTaskLook(taskLook));
         }
         return taskList;
     }

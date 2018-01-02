@@ -45,7 +45,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public int addTask(TaskLook taskLook) throws TaskContainerException {
         try {
-            return queryManager.addTask(TaskTransformer.transformTaskWrapper(taskLook));
+            return queryManager.addTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
@@ -56,7 +56,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public void removeTask(TaskLook taskLook) throws TaskContainerException, TaskNotFoundException {
         try {
-            queryManager.removeTask(TaskTransformer.transformTaskWrapper(taskLook));
+            queryManager.removeTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
@@ -67,7 +67,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public void editTask(TaskLook taskLook) throws TaskContainerException, TaskNotFoundException {
         try {
-            queryManager.editTask(TaskTransformer.transformTaskWrapper(taskLook));
+            queryManager.editTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
@@ -78,7 +78,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public void assignToTask(TaskLook taskLook) throws TaskContainerException, TaskNotFoundException {
         try {
-            queryManager.assignToTask(TaskTransformer.transformTaskWrapper(taskLook));
+            queryManager.assignToTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {

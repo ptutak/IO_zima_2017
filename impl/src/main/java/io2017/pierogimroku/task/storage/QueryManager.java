@@ -3,8 +3,11 @@ package io2017.pierogimroku.task.storage;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import io2017.pierogimroku.task.api.TaskLook;
 import io2017.pierogimroku.task.storage.entity.Task;
 
 import java.io.IOException;
@@ -28,7 +31,17 @@ public class QueryManager {
         TableUtils.createTableIfNotExists(connectionSource, Task.class);
     }
 
+    public List<Task> searchTask(TaskLook taskLook) throws SQLException, IOException {
+        Where<Task,String> query=null;
+        if (taskLook.getId()!=null){
+            query=taskDao.queryBuilder().where().eq(Task.ID,taskLook.getId());
+        }
+        if (taskLook.getName()!=null){
+            query.and().eq(Task.NAME,taskLook.getName());
+        }
+        return null;
 
+    }
 
 
     public List<Task> searchTaskByAssignedEmployee(int emplyeeId) throws SQLException, IOException {
@@ -112,7 +125,7 @@ public class QueryManager {
         return tmpList;
     }
 
-    public int addTask(Task task) throws SQLException, IOException {
+    public Integer addTask(Task task) throws SQLException, IOException {
         taskDao.create(task);
         return task.getId();
     }
