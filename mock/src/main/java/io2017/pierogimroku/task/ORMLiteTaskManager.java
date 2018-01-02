@@ -22,7 +22,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     public List<TaskLook> searchTaskByAssignedEmployee(int employeeId) {
         System.err.println(TAG+": Searching Tasks by assigned employee "+ employeeId);
         List<TaskLook> taskLookList = new LinkedList<>();
-        taskLookList.add(new TaskLook("Some TaskLook","Something",10,1, null,  employeeId, 100));
+        taskLookList.add(new TaskLook("Some TaskLook","Something",10, 1, null,  employeeId, 100));
         return taskLookList;
     }
 
@@ -38,7 +38,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     public List<TaskLook> search(String phrase) {
         System.err.println(TAG+": Searching Tasks by phrase "+phrase);
         List<TaskLook> taskLookList = new LinkedList<>();
-        taskLookList.add(new TaskLook("Some TaskLook",phrase,10,1, null,  1, 100));
+        taskLookList.add(new TaskLook("Some TaskLook",phrase, 10,1, null,  1, 100));
         return taskLookList;
     }
 
@@ -59,7 +59,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     }
 
     @Override
-    public int addTask(TaskLook taskLook) {
+    public Integer addTask(TaskLook taskLook) {
         System.err.println(TAG+": TaskLook added " + taskLook.toString());
         return taskLook.getId();
     }

@@ -15,7 +15,7 @@ public interface ITaskManager {
      * @return id of the taskLook
      * @throws TaskContainerException on failure
      */
-    int addTask(TaskLook taskLook) throws TaskContainerException;
+    Integer addTask(TaskLook taskLook) throws TaskContainerException;
 
     /**
      * Removes task

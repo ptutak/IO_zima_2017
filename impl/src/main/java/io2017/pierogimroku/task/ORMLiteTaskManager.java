@@ -43,7 +43,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     }
 
     @Override
-    public int addTask(TaskLook taskLook) throws TaskContainerException {
+    public Integer addTask(TaskLook taskLook) throws TaskContainerException {
         try {
             return queryManager.addTask(TaskTransformer.transformTaskLook(taskLook));
         } catch (SQLException e) {
