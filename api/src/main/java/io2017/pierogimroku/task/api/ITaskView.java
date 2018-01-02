@@ -25,7 +25,7 @@ public interface ITaskView {
      * @return List of tasks with a given TaskLook
      * @throws TaskContainerException
      */
-    public List<TaskLook> searchTaskLook(TaskLook taskLook) throws TaskContainerException;
+    public List<TaskLook> searchTaskByLook(TaskLook taskLook) throws TaskContainerException;
 
     /**
      * Searches phrase everywhere

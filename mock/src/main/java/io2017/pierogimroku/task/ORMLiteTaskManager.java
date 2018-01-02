@@ -1,9 +1,6 @@
 package io2017.pierogimroku.task;
 
-import io2017.pierogimroku.task.api.ITaskManager;
-import io2017.pierogimroku.task.api.ITaskView;
-import io2017.pierogimroku.task.api.TaskLook;
-import io2017.pierogimroku.task.api.TaskNotFoundException;
+import io2017.pierogimroku.task.api.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +23,14 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
         System.err.println(TAG+": Searching Tasks by assigned employee "+ employeeId);
         List<TaskLook> taskLookList = new LinkedList<>();
         taskLookList.add(new TaskLook("Some TaskLook","Something",10,1, null,  employeeId, 100));
+        return taskLookList;
+    }
+
+    @Override
+    public List<TaskLook> searchTaskByLook(TaskLook taskLook) throws TaskContainerException {
+        System.err.println(TAG+": Searching Tasks by task look "+ taskLook);
+        List<TaskLook> taskLookList = new LinkedList<>();
+        taskLookList.add(new TaskLook(taskLook.getName(),taskLook.getDescription(),taskLook.getOwnerId(),taskLook.getAssignedId(), taskLook.getStartDate(),  taskLook.getAssignedId(), taskLook.getPriority()));
         return taskLookList;
     }
 
