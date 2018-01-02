@@ -20,6 +20,14 @@ public interface ITaskView {
     public List<TaskLook> searchTaskByAssignedEmployee(int employeeId) throws TaskContainerException;
 
     /**
+     * Searches tasks with a specific TaskLook
+     * @param taskLook
+     * @return List of tasks with a given TaskLook
+     * @throws TaskContainerException
+     */
+    public List<TaskLook> searchTaskLook(TaskLook taskLook) throws TaskContainerException;
+
+    /**
      * Searches phrase everywhere
      * @param phrase string input
      * @return list of tasks with given phrase, list is empty if no task were found

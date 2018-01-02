@@ -8,22 +8,22 @@ import java.util.List;
 
 public class TaskTransformer {
 
-    public static Task transformTaskWrapper(TaskLook wrapper){
+    public static Task transformTaskWrapper(TaskLook taskLook){
         Task t = new Task();
-        t.setId(wrapper.getId());
-        t.setAssignedId(wrapper.getAssignedId());
-        t.setDescription(wrapper.getDescription());
-        t.setName(wrapper.getName());
-        t.setOwnerId(wrapper.getOwnerId());
-        t.setPriority(wrapper.getPriority());
-        t.setStartDate(wrapper.getStartDate());
-        t.setStatus(wrapper.getStatus());
-        t.setTimeEstimate(wrapper.getTimeEstimate());
+        t.setId(taskLook.getId());
+        t.setAssignedId(taskLook.getAssignedId());
+        t.setDescription(taskLook.getDescription());
+        t.setName(taskLook.getName());
+        t.setOwnerId(taskLook.getOwnerId());
+        t.setPriority(taskLook.getPriority());
+        t.setStartDate(taskLook.getStartDate());
+        t.setStatus(taskLook.getStatus());
+        t.setTimeEstimate(taskLook.getTimeEstimate());
         return t;
     }
 
     public static TaskLook transformTask(Task task){
-        TaskLook wrapper = new TaskLook(
+        TaskLook taskLook = new TaskLook(
                 task.getId(),
                 task.getName(),
                 task.getDescription(),
@@ -34,7 +34,7 @@ public class TaskTransformer {
                 task.getPriority()
         );
 
-        return wrapper;
+        return taskLook;
     }
 
     public static List<TaskLook> transformTaskList(List<Task> taskList){

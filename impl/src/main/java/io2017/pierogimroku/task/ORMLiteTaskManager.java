@@ -14,8 +14,17 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
 
 
     public static void main(String[] argv){
-        ORMLiteTaskManager a = new ORMLiteTaskManager();
-        a.addTask(new TaskLook("asd","asdasd",1,2,null,1,2));
+        ORMLiteTaskManager a = null;
+        try {
+            a = new ORMLiteTaskManager();
+        } catch (TaskContainerException e) {
+            e.printStackTrace();
+        }
+        try {
+            a.addTask(new TaskLook("asd","asdasd",1,2,null,1,2));
+        } catch (TaskContainerException e) {
+            e.printStackTrace();
+        }
         try {
             System.in.read();
         } catch (IOException e) {
@@ -88,6 +97,11 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
         }
     }
 
+    @java.lang.Override
+    public List<TaskLook> searchTaskLook(TaskLook taskLook) throws TaskContainerException {
+        return null;
+    }
+
     @Override
     public List<TaskLook> search(String phrase) throws TaskContainerException {
         try {
@@ -120,4 +134,5 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
             throw new TaskContainerException(e);
         }
     }
+
 }
