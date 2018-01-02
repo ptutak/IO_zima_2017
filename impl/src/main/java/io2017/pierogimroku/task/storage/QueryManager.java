@@ -39,12 +39,33 @@ public class QueryManager {
         if (taskLook.getName()!=null){
             query.and().eq(Task.NAME,taskLook.getName());
         }
-        return null;
+        if (taskLook.getDescription()!=null){
+            query.and().eq(Task.DESCRIPTION,taskLook.getDescription());
+        }
+        if (taskLook.getAssignedId()!=null){
+            query.and().eq(Task.ASSIGNEDID,taskLook.getAssignedId());
+        }
+        if (taskLook.getOwnerId()!=null){
+            query.and().eq(Task.OWNERID,taskLook.getOwnerId());
+        }
+        if (taskLook.getPriority()!=null){
+            query.and().eq(Task.PRIORITY,taskLook.getPriority());
+        }
+        if (taskLook.getStartDate()!=null){
+            query.and().eq(Task.STARTDATE,taskLook.getStartDate());
+        }
+        if (taskLook.getStatus()!=null){
+            query.and().eq(Task.STATUS,taskLook.getStatus());
+        }
+        if (taskLook.getTimeEstimate()!=null){
+            query.and().eq(Task.TIMEESTIMATE,taskLook.getTimeEstimate());
+        }
+        return taskDao.query(query.prepare());
 
     }
 
 
-    public List<Task> searchTaskByAssignedEmployee(int emplyeeId) throws SQLException, IOException {
+    public List<Task> searchTaskByAssignedEmployee(Integer emplyeeId) throws SQLException, IOException {
         List<Task> tmpList =
                 taskDao.query(
                         taskDao.queryBuilder().where()
@@ -53,7 +74,7 @@ public class QueryManager {
         return tmpList;
     }
 
-    public List<Task> searchTaskByOwnerEmployee(int emplyeeId) throws SQLException, IOException {
+    public List<Task> searchTaskByOwnerEmployee(Integer emplyeeId) throws SQLException, IOException {
         List<Task> tmpList =
                 taskDao.query(
                         taskDao.queryBuilder().where()
