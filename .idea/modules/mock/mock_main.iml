@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id=":mock:main" external.linked.project.path="$MODULE_DIR$/../../../mock" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="io2017.pierogimroku.task" external.system.module.type="sourceSet" external.system.module.version="1.1" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
-    <output url="file://$MODULE_DIR$/../../../mock/out/production/classes" />
+    <output url="file://$MODULE_DIR$/../../../mock/build/classes/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../mock/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../mock/src/main/java" isTestSource="false" />
