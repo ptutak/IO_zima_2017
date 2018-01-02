@@ -32,36 +32,77 @@ public class QueryManager {
     }
 
     public List<Task> searchTask(TaskLook taskLook) throws SQLException, IOException {
-        Where<Task,String> query=null;
+        Where<Task,String> query=taskDao.queryBuilder().where();
+        boolean eqDone=false;
+
         if (taskLook.getId()!=null){
-            query=taskDao.queryBuilder().where().eq(Task.ID,taskLook.getId());
-        }
-        if (taskLook.getName()!=null){
-            query.and().eq(Task.NAME,taskLook.getName());
-        }
-        if (taskLook.getDescription()!=null){
-            query.and().eq(Task.DESCRIPTION,taskLook.getDescription());
-        }
-        if (taskLook.getAssignedId()!=null){
-            query.and().eq(Task.ASSIGNEDID,taskLook.getAssignedId());
-        }
-        if (taskLook.getOwnerId()!=null){
-            query.and().eq(Task.OWNERID,taskLook.getOwnerId());
-        }
-        if (taskLook.getPriority()!=null){
-            query.and().eq(Task.PRIORITY,taskLook.getPriority());
-        }
-        if (taskLook.getStartDate()!=null){
-            query.and().eq(Task.STARTDATE,taskLook.getStartDate());
-        }
-        if (taskLook.getStatus()!=null){
-            query.and().eq(Task.STATUS,taskLook.getStatus());
-        }
-        if (taskLook.getTimeEstimate()!=null){
-            query.and().eq(Task.TIMEESTIMATE,taskLook.getTimeEstimate());
+            query.eq(Task.ID,taskLook.getId());
+        } else {
+            if (taskLook.getName() != null) {
+                query.eq(Task.NAME, taskLook.getName());
+                eqDone = true;
+            }
+            if (taskLook.getDescription() != null) {
+                if (eqDone) {
+                    query.and().eq(Task.DESCRIPTION, taskLook.getDescription());
+                } else {
+                    query.eq(Task.DESCRIPTION, taskLook.getDescription());
+                    eqDone = true;
+                }
+            }
+            if (taskLook.getAssignedId() != null) {
+                if (eqDone) {
+                    query.and().eq(Task.ASSIGNEDID, taskLook.getAssignedId());
+                } else {
+                    query.eq(Task.ASSIGNEDID, taskLook.getAssignedId());
+                    eqDone = true;
+                }
+            }
+            if (taskLook.getOwnerId() != null) {
+                if (eqDone) {
+                    query.and().eq(Task.OWNERID, taskLook.getOwnerId());
+                } else {
+                    query.eq(Task.OWNERID, taskLook.getOwnerId());
+                    eqDone = true;
+                }
+            }
+            if (taskLook.getPriority() != null) {
+                if (eqDone) {
+                    query.and().eq(Task.PRIORITY, taskLook.getPriority());
+                } else {
+                    query.eq(Task.PRIORITY, taskLook.getPriority());
+                    eqDone = true;
+                }
+            }
+            if (taskLook.getStartDate() != null) {
+                if (eqDone) {
+                    query.and().eq(Task.STARTDATE, taskLook.getStartDate());
+                } else {
+                    query.eq(Task.STARTDATE, taskLook.getStartDate());
+                    eqDone = true;
+                }
+            }
+            if (taskLook.getStatus() != null) {
+                if (eqDone) {
+                    query.and().eq(Task.STATUS, taskLook.getStatus());
+                } else {
+                    query.eq(Task.STATUS, taskLook.getStatus());
+                    eqDone = true;
+                }
+            }
+            if (taskLook.getTimeEstimate() != null) {
+                if (eqDone) {
+                    query.and().eq(Task.TIMEESTIMATE, taskLook.getTimeEstimate());
+                } else {
+                    query.eq(Task.TIMEESTIMATE, taskLook.getTimeEstimate());
+                    eqDone = true;
+                }
+            }
+            if (!eqDone){
+                query.isNotNull(Task.ID);
+            }
         }
         return taskDao.query(query.prepare());
-
     }
 
 
