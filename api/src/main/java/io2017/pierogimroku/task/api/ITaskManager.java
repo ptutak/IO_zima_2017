@@ -4,6 +4,8 @@ package io2017.pierogimroku.task.api;
  * Created by Pierogi Mroku, IO WIMiIP AGH 2017
  */
 
+import java.util.List;
+
 /**
  * Provides management functionality to task container/database
  */
@@ -40,4 +42,10 @@ public interface ITaskManager {
      * @throws TaskContainerException on failure
      */
     void assignToTask(TaskLook taskLook) throws TaskContainerException, TaskNotFoundException;
+
+    /**
+     * @return list of all tasks, list is empty if no task were found
+     * @throws TaskContainerException on failure
+     */
+    public List<TaskLook> getAll() throws TaskContainerException;
 }
