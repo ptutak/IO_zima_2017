@@ -102,6 +102,22 @@ public class ApiTester {
             System.out.println(look);
         }
     }
+    
+    public static void assignToTask(){
+        taskList();
+        System.out.println("Choose task by Id:");
+        System.out.println("Task Id:");
+        TaskLook editTask=new TaskLook(Integer.parseInt(stdin.nextLine()));
+        System.out.println("Edit task properties:");
+        System.out.println("Task Assigned Id:");
+        editTask.setAssignedId(Integer.parseInt(stdin.nextLine()));
+        try {
+            tm.assignToTask(editTask);
+        } catch (TaskNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public static void main(String[] argv){
         System.setProperty(LocalLog.LOCAL_LOG_LEVEL_PROPERTY, "ERROR");
         int choice=1;
@@ -113,7 +129,7 @@ public class ApiTester {
             e.printStackTrace();
         }
         while (choice!=0){
-            System.out.println("Menu:\n1 - Lista tasków\n2 - Dodaj task\n3 - Usuń task\n4 - Edytuj task\n5 - Wyszukaj task\n0 - Koniec\n");
+            System.out.println("Menu:\n1 - Lista tasków\n2 - Dodaj task\n3 - Usuń task\n4 - Edytuj task\n5 - Wyszukaj task\n6 - Zmien przypisanego użytkownia\n0 - Koniec\n");
             choice=Integer.parseInt(stdin.nextLine());
             switch (choice) {
                 case 1:
@@ -130,6 +146,9 @@ public class ApiTester {
                     break;
                 case 5:
                     searchTask();
+                    break;
+                case 6:
+                    assignToTask();
                     break;
             }
         }

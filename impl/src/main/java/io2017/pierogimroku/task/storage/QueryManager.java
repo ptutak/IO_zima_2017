@@ -22,7 +22,7 @@ import java.util.List;
 public class QueryManager {
     private final String databaseUrl;
     private final ConnectionSource connectionSource;
-    private final Dao<Task, String> taskDao;
+    private final Dao<Task, Integer> taskDao;
 
     public QueryManager(String dbName) throws SQLException {
         databaseUrl = "jdbc:sqlite:"+dbName;
@@ -32,7 +32,7 @@ public class QueryManager {
     }
 
     public List<Task> searchTask(TaskLook taskLook) throws SQLException, IOException {
-        Where<Task,String> query=taskDao.queryBuilder().where();
+        Where<Task,Integer> query=taskDao.queryBuilder().where();
         boolean eqDone=false;
 
         if (taskLook.getId()!=null){
@@ -201,8 +201,9 @@ public class QueryManager {
     }
 
     public void assignToTask(Task task) throws SQLException, IOException{
-        //TODO
-        throw new RuntimeException("Not supported yet");
+        Task current = taskDao.queryForId(task.getId());
+        current.setAssignedId(task.getAssignedId());
+        taskDao.update(current);
     }
 
     @Override
