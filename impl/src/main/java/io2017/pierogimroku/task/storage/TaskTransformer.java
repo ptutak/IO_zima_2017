@@ -34,6 +34,7 @@ public class TaskTransformer {
                 task.getTimeEstimate(),
                 task.getPriority()
         );
+        taskLook.setStatus(task.getStatus());
 
         return taskLook;
     }
