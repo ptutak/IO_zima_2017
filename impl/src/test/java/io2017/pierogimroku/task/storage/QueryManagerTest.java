@@ -63,4 +63,20 @@ public class QueryManagerTest {
 
         assertTrue(manager.searchTaskByLook(b).get(0).getStatus().equals(TaskLook.Status.FINISHED));
     }
+
+    @Test
+    public void testIsPriorityCorrect()
+    {
+        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
+
+        TaskLook a = new TaskLook();
+        a.setName("TaskName");
+        a.setPriority(2);
+        int id = manager.addTask(a);
+
+        assertTrue(manager.getAll().size()>0);
+        TaskLook b = new TaskLook();
+        b.setId(id);
+        assertTrue(manager.searchTaskByLook(b).get(0).getPriority().equals(2));
+    }
 }
