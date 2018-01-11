@@ -5,7 +5,6 @@
     <content url="file://$MODULE_DIR$/../../../mock">
       <excludeFolder url="file://$MODULE_DIR$/../../../mock/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../mock/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../mock/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
