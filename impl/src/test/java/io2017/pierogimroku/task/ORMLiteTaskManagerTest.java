@@ -1,4 +1,4 @@
-package io2017.pierogimroku.task.storage;
+package io2017.pierogimroku.task;
 
 import io2017.pierogimroku.task.ORMLiteTaskManager;
 import io2017.pierogimroku.task.api.TaskContainerException;
