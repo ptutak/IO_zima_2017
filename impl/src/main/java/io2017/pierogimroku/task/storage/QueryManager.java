@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.PreparedQuery;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -129,62 +130,50 @@ public class QueryManager {
         return tmpList;
     }
 
-    public List<Task> search(String tmp) throws SQLException, IOException {
-        String tmpWord;
-        int value;
+    public List<Task> search(String phrase) throws SQLException, IOException {
         List<Task> tmpList = taskDao.queryForAll();
+        QueryBuilder<Task,Integer> query = taskDao.queryBuilder();
         List<Task> tmpList2 = new LinkedList<>();
         for(Task el : tmpList){
-            tmpWord = el.getId().toString();
-            value = tmpWord.indexOf(tmp);
-            if(value >= 0){
-                tmpList2.add(el);
-                continue;
-            }
-            tmpWord = el.getName();
-            value = tmpWord.indexOf(tmp);
-            if(value >= 0){
-                tmpList2.add(el);
-                continue;
-            }
-            tmpWord = el.getDescription();
-            value = tmpWord.indexOf(tmp);
-            if(value >= 0){
-                tmpList2.add(el);
-                continue;
-            }
-            tmpWord = el.getOwnerId().toString();
-            value = tmpWord.indexOf(tmp);
-            if(value >= 0){
-                tmpList2.add(el);
-                continue;
-            }
-            tmpWord = el.getAssignedId().toString();
-            value = tmpWord.indexOf(tmp);
-            if(value >= 0){
-                tmpList2.add(el);
-                continue;
-            }
-            tmpWord = el.getTimeEstimate().toString();
-            value = tmpWord.indexOf(tmp);
-            if(value >= 0){
-                tmpList2.add(el);
-                continue;
-            }
-            tmpWord = el.getStartDate().toString();
-            value = tmpWord.indexOf(tmp);
-            if(value >= 0){
-                tmpList2.add(el);
-                continue;
-            }
-            tmpWord = el.getStatus().toString();
-            value = tmpWord.indexOf(tmp);
-            if(value >= 0){
-                tmpList2.add(el);
-                continue;
-            }
+           if(isTaskContainingAPhrase(el,phrase)){
+               tmpList2.add(el);
+           }
         }
-        return tmpList;
+        return tmpList2;
+    }
+
+    private boolean isTaskContainingAPhrase(Task el, String phrase){
+        boolean contains = false;
+
+        if(el.getId()!=null){
+            contains = contains || el.getId().toString().contains(phrase);
+        }
+        if(el.getName()!=null){
+            contains = contains || el.getName().contains(phrase);
+        }
+        if(el.getDescription()!=null){
+            contains = contains || el.getDescription().contains(phrase);
+        }
+        if(el.getOwnerId()!=null){
+            contains = contains || el.getOwnerId().toString().contains(phrase);
+        }
+        if(el.getAssignedId()!=null){
+            contains = contains || el.getAssignedId().toString().contains(phrase);
+        }
+        if(el.getTimeEstimate()!=null){
+            contains = contains || el.getTimeEstimate().toString().contains(phrase);
+        }
+        if(el.getPriority()!=null){
+            contains = contains || el.getPriority().toString().contains(phrase);
+        }
+        if(el.getStartDate()!=null){
+            contains = contains || el.getStartDate().toString().contains(phrase);
+        }
+        if(el.getStatus()!=null){
+            contains = contains || el.getStatus().toString().contains(phrase);
+        }
+
+        return contains;
     }
 
     public Integer addTask(Task task) throws SQLException, IOException {

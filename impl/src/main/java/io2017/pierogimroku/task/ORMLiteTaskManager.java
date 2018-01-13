@@ -35,7 +35,9 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     public Integer addTask(TaskLook taskLook) throws TaskContainerException {
         taskLook.setId(null);
         try {
-            return queryManager.addTask(TaskTransformer.transformTaskLook(taskLook));
+            int id = queryManager.addTask(TaskTransformer.transformTaskLook(taskLook));
+            taskLook.setId(id);
+            return id;
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {

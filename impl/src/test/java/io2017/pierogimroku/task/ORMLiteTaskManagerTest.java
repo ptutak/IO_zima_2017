@@ -5,6 +5,7 @@ import io2017.pierogimroku.task.api.TaskContainerException;
 import io2017.pierogimroku.task.api.TaskLook;
 import io2017.pierogimroku.task.api.TaskNotFoundException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -16,9 +17,23 @@ import static org.junit.Assert.*;
 
 
 public class ORMLiteTaskManagerTest {
+    private ORMLiteTaskManager manager;
+
+    @Before
+    public void setup(){
+        manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
+    }
+
+    @Test
+    public void testIfIdIsCorrectylSetAfterAdd(){
+        TaskLook a = new TaskLook();
+        a.setName("TaskName");
+        int id = manager.addTask(a);
+        assertEquals(manager.searchTaskByLook(a).size(),1);
+    }
+
     @Test
     public void testAddAndRemoveTask() throws TaskContainerException, TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         a.setName("TaskName");
@@ -34,7 +49,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsIdSet() throws TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         a.setName("TestName");
@@ -50,7 +64,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsNameCorrect() throws TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         a.setName("TestName");
@@ -67,7 +80,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsDescriptionCorrect() throws TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         a.setName("TestName");
@@ -85,7 +97,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsOwnerIdCorrect() throws TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         a.setName("TestName");
@@ -103,8 +114,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsAssignedIdCorrect() throws TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
-
         TaskLook a = new TaskLook();
         a.setName("TestName");
         a.setAssignedId(30);
@@ -121,8 +130,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsStartDateCorrect() throws TaskNotFoundException, ParseException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
-
         TaskLook a = new TaskLook();
         String oldstring = "2011-01-18";
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
@@ -142,8 +149,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsTimeEstimateCorrect() throws TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
-
         TaskLook a = new TaskLook();
         a.setName("TestName");
         a.setTimeEstimate(30);
@@ -161,8 +166,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsStatusCorrect() throws TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
-
         TaskLook a = new TaskLook();
         a.setName("TaskName");
         a.setStatus(TaskLook.Status.FINISHED);
@@ -179,8 +182,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testIsPriorityCorrect() throws TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
-
         TaskLook a = new TaskLook();
         a.setName("TaskName");
         a.setPriority(2);
@@ -197,10 +198,7 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testEditTask() throws TaskContainerException, TaskNotFoundException, ParseException {
-
         System.out.println("\n\n\n testEditTask \n\n\n");
-
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         String oldstring = "2011-01-18";
         String oldstring1 = "2017-11-20";
@@ -258,10 +256,7 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testAssignedToTask() throws TaskNotFoundException {
-
         System.out.println("\n\n\n testAssignedToTask \n\n\n");
-
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         a.setName("testAssignedToTask");
@@ -290,12 +285,7 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testSearchByLook() throws TaskNotFoundException {
-
         System.out.println("\n\n\n testSearchByLook \n\n\n");
-
-
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
-
         TaskLook a = new TaskLook();
         TaskLook b = new TaskLook();
 
@@ -353,11 +343,7 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testSearchByAssigned() throws TaskNotFoundException {
-
         System.out.println("\n\n\n testSearchByAssigned \n\n\n");
-
-
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         TaskLook b = new TaskLook();
@@ -385,11 +371,7 @@ public class ORMLiteTaskManagerTest {
     }
     @Test
     public void testSearchByOwner() throws TaskNotFoundException {
-
         System.out.println("\n\n\n testSearchByOwner \n\n\n");
-
-
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         TaskLook b = new TaskLook();
@@ -432,12 +414,6 @@ public class ORMLiteTaskManagerTest {
 
     @Test
     public void testSearchByPhrase() throws TaskNotFoundException, TaskContainerException {
-
-        System.out.println("\n\n\n testSearchByPhrase \n\n\n");
-
-
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
-
         TaskLook a = new TaskLook();
         TaskLook b = new TaskLook();
 
@@ -454,7 +430,6 @@ public class ORMLiteTaskManagerTest {
 
         assertFalse(manager.search("test").isEmpty());
 
-/*
         String searchPhrase = "testSearchByPhrase";
         String tmpWord;
         int value;
@@ -462,9 +437,7 @@ public class ORMLiteTaskManagerTest {
 
         List<TaskLook> list=manager.search(searchPhrase);
         for (TaskLook look : list){
-
             System.out.println("\n"+look+"\n");
-
             tmpWord = look.getId().toString();
             value = tmpWord.indexOf(searchPhrase);
             if(value >= 0){
@@ -516,7 +489,7 @@ public class ORMLiteTaskManagerTest {
             assertTrue(check>0);
             check=0;
         }
-*/
+
         manager.removeTask(manager.searchTaskByLook(a).get(0));
         manager.removeTask(manager.searchTaskByLook(b).get(0));
     }
