@@ -13,14 +13,14 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Kuba on 12.01.2018.
  */
-public class TaskTransformerTest {
+public class TaskUtilsTest {
     @Test
     public void transformTaskLook() {
         //given
         TaskLook taskLook = new TaskLook(1, "name", "description", 2, 3, new Date(), 4, 5);
 
         //when
-        Task task = TaskTransformer.transformTaskLook(taskLook);
+        Task task = TaskUtils.transformTaskLook(taskLook);
 
         //then
         assertEquals(task.getId(), taskLook.getId());
@@ -48,7 +48,7 @@ public class TaskTransformerTest {
         task.setStatus(TaskLook.Status.ASSIGNED);
 
         //when
-        TaskLook taskLook = TaskTransformer.transformTask(task);
+        TaskLook taskLook = TaskUtils.transformTask(task);
 
         //then
         assertEquals(task.getId(), taskLook.getId());
@@ -68,7 +68,7 @@ public class TaskTransformerTest {
         List<Task> tasks = Arrays.asList(new Task(), new Task(), new Task());
 
         //when
-        List<TaskLook> taskLooks = TaskTransformer.transformTaskList(tasks);
+        List<TaskLook> taskLooks = TaskUtils.transformTaskList(tasks);
 
         //then
         assertEquals(3, taskLooks.size());
@@ -80,7 +80,7 @@ public class TaskTransformerTest {
         List<TaskLook> taskLooks = Arrays.asList(new TaskLook(), new TaskLook(), new TaskLook(), new TaskLook());
 
         //when
-        List<Task> tasks = TaskTransformer.transformTaskLookList(taskLooks);
+        List<Task> tasks = TaskUtils.transformTaskLookList(taskLooks);
 
         //then
         assertEquals(4, tasks.size());

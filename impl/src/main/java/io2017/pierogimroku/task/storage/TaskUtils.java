@@ -6,9 +6,7 @@ import io2017.pierogimroku.task.storage.entity.Task;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TaskTransformer {
-
-
+public class TaskUtils {
     public static Task transformTaskLook(TaskLook taskLook){
         Task t = new Task();
         t.setId(taskLook.getId());

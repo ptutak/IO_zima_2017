@@ -2,12 +2,11 @@ package io2017.pierogimroku.task;
 
 import io2017.pierogimroku.task.api.*;
 import io2017.pierogimroku.task.storage.QueryManager;
-import io2017.pierogimroku.task.storage.TaskTransformer;
+import io2017.pierogimroku.task.storage.TaskUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Scanner;
 
 public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     private final String databaseName = "taskdatabase";
@@ -35,7 +34,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     public Integer addTask(TaskLook taskLook) throws TaskContainerException {
         taskLook.setId(null);
         try {
-            int id = queryManager.addTask(TaskTransformer.transformTaskLook(taskLook));
+            int id = queryManager.addTask(TaskUtils.transformTaskLook(taskLook));
             taskLook.setId(id);
             return id;
         } catch (SQLException e) {
@@ -48,7 +47,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public void removeTask(TaskLook taskLook) throws TaskContainerException, TaskNotFoundException {
         try {
-            queryManager.removeTask(TaskTransformer.transformTaskLook(taskLook));
+            queryManager.removeTask(TaskUtils.transformTaskLook(taskLook));
         } catch (SQLException e) {
             throw new TaskNotFoundException(e);
         } catch (IOException e) {
@@ -59,7 +58,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public void editTask(TaskLook taskLook) throws TaskContainerException, TaskNotFoundException {
         try {
-            queryManager.editTask(TaskTransformer.transformTaskLook(taskLook));
+            queryManager.editTask(TaskUtils.transformTaskLook(taskLook));
         } catch (SQLException e) {
             throw new TaskNotFoundException(e);
         } catch (IOException e) {
@@ -70,7 +69,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public void assignToTask(TaskLook taskLook) throws TaskContainerException, TaskNotFoundException {
         try {
-            queryManager.assignToTask(TaskTransformer.transformTaskLook(taskLook));
+            queryManager.assignToTask(TaskUtils.transformTaskLook(taskLook));
         } catch (SQLException e) {
             throw new TaskNotFoundException(e);
         } catch (IOException e) {
@@ -81,7 +80,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public List<TaskLook> searchTaskByAssignedEmployee(int employeeId) throws TaskContainerException {
         try {
-            return TaskTransformer.transformTaskList(queryManager.searchTaskByAssignedEmployee(employeeId));
+            return TaskUtils.transformTaskList(queryManager.searchTaskByAssignedEmployee(employeeId));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
@@ -92,7 +91,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @java.lang.Override
     public List<TaskLook> searchTaskByLook(TaskLook taskLook) throws TaskContainerException {
         try {
-            return TaskTransformer.transformTaskList(queryManager.searchTask(taskLook));
+            return TaskUtils.transformTaskList(queryManager.searchTask(taskLook));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
@@ -103,7 +102,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public List<TaskLook> search(String phrase) throws TaskContainerException {
         try {
-            return TaskTransformer.transformTaskList(queryManager.search(phrase));
+            return TaskUtils.transformTaskList(queryManager.search(phrase));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
@@ -114,7 +113,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public List<TaskLook> searchTaskByOwnerEmployee(int employeeId) throws TaskContainerException {
         try {
-            return TaskTransformer.transformTaskList(queryManager.searchTaskByOwnerEmployee(employeeId));
+            return TaskUtils.transformTaskList(queryManager.searchTaskByOwnerEmployee(employeeId));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
@@ -125,7 +124,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @Override
     public List<TaskLook> getAll() throws TaskContainerException {
         try {
-            return TaskTransformer.transformTaskList(queryManager.getAll());
+            return TaskUtils.transformTaskList(queryManager.getAll());
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
