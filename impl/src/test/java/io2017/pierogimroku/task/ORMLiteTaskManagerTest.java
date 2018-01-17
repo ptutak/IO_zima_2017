@@ -388,7 +388,7 @@ public class ORMLiteTaskManagerTest {
         TaskLook searchTask = new TaskLook();
         searchTask.setOwnerId(1);
 
-        List<TaskLook> list=manager.searchTaskByAssignedEmployee(searchTask.getOwnerId());
+        List<TaskLook> list=manager.searchTaskByOwnerEmployee(searchTask.getOwnerId());
         for (TaskLook look : list){
             System.out.println("\n"+look+"\n");
             assertEquals(look.getOwnerId(),searchTask.getOwnerId());
@@ -493,23 +493,5 @@ public class ORMLiteTaskManagerTest {
         manager.removeTask(manager.searchTaskByLook(a).get(0));
         manager.removeTask(manager.searchTaskByLook(b).get(0));
     }
-
-    @Test
-    public void testSearchTaskByOwnerEmployee() throws TaskNotFoundException {
-        TaskLook task = new TaskLook();
-        task.setOwnerId(2);
-
-        manager.addTask(task);
-        List<TaskLook> result = manager.searchTaskByOwnerEmployee(2);
-        assertTrue(result.size()>0);
-
-        boolean itemFound = false;
-        for(TaskLook taskLook: result){
-            itemFound |= taskLook.getId().equals(task.getId());
-            manager.removeTask(taskLook);
-        }
-        assertTrue(itemFound);
-    }
-
 }
 
