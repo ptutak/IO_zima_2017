@@ -81,6 +81,28 @@ public class ApiTester {
         editTask.setAssignedId(Integer.parseInt(stdin.nextLine()));
         System.out.println("Task Description:");
         editTask.setDescription(stdin.nextLine());
+        System.out.println("Task Priority:");
+        editTask.setPriority(Integer.parseInt(stdin.nextLine()));
+        System.out.println("Task Status:");
+        System.out.println("1-NEW\n2-FINISHED\n3-ASSIGNED\n4-IN_REVIEW\n5-UNDER_IMPLEMENTATION\n");
+        int choice=Integer.parseInt(stdin.nextLine());
+        switch(choice){
+            case 1:
+                editTask.setStatus(TaskLook.Status.NEW);
+                break;
+            case 2:
+                editTask.setStatus(TaskLook.Status.FINISHED);
+                break;
+            case 3:
+                editTask.setStatus(TaskLook.Status.ASSIGNED);
+                break;
+            case 4:
+                editTask.setStatus(TaskLook.Status.IN_REVIEW);
+                break;
+            case 5:
+                editTask.setStatus(TaskLook.Status.UNDER_IMPLEMENTATION);
+                break;
+        }
         try {
             tm.editTask(editTask);
         } catch (TaskNotFoundException e) {
