@@ -19,7 +19,6 @@ public class ApiTester {
         List<TaskLook> list=tm.getAll();
         for (TaskLook look : list){
             System.out.println(look);
-            //System.out.println("Id: "+tl.getId()+",\tName: "+tl.getName()+",\tOwner: "+tl.getOwnerId()+",\tAssigned: "+tl.getAssignedId()+",\nDescription: "+tl.getDescription());
         }
     }
 
@@ -33,6 +32,28 @@ public class ApiTester {
         newTask.setAssignedId(Integer.parseInt(stdin.nextLine()));
         System.out.println("Task Description:");
         newTask.setDescription(stdin.nextLine());
+        System.out.println("Task Priority:");
+        newTask.setPriority(Integer.parseInt(stdin.nextLine()));
+        System.out.println("Task Status:");
+        System.out.println("1-NEW\n2-FINISHED\n3-ASSIGNED\n4-IN_REVIEW\n5-UNDER_IMPLEMENTATION\n");
+        int choice=Integer.parseInt(stdin.nextLine());
+        switch(choice){
+            case 1:
+                newTask.setStatus(TaskLook.Status.NEW);
+                break;
+            case 2:
+                newTask.setStatus(TaskLook.Status.FINISHED);
+                break;
+            case 3:
+                newTask.setStatus(TaskLook.Status.ASSIGNED);
+                break;
+            case 4:
+                newTask.setStatus(TaskLook.Status.IN_REVIEW);
+                break;
+            case 5:
+                newTask.setStatus(TaskLook.Status.UNDER_IMPLEMENTATION);
+                break;
+        }
         tm.addTask(newTask);
     }
 
