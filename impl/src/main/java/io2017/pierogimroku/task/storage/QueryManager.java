@@ -32,70 +32,70 @@ public class QueryManager {
         TableUtils.createTableIfNotExists(connectionSource, Task.class);
     }
 
-    public List<Task> searchTask(TaskLook taskLook) throws SQLException, IOException {
+    public List<Task> searchTask(Task task) throws SQLException, IOException {
         Where<Task,Integer> query=taskDao.queryBuilder().where();
         boolean eqDone=false;
 
-        if (taskLook.getId()!=null){
-            query.eq(Task.ID,taskLook.getId());
+        if (task.getId()!=null){
+            query.eq(Task.ID,task.getId());
         } else {
-            if (taskLook.getName() != null) {
-                query.eq(Task.NAME, taskLook.getName());
+            if (task.getName() != null) {
+                query.eq(Task.NAME, task.getName());
                 eqDone = true;
             }
-            if (taskLook.getDescription() != null) {
+            if (task.getDescription() != null) {
                 if (eqDone) {
-                    query.and().eq(Task.DESCRIPTION, taskLook.getDescription());
+                    query.and().eq(Task.DESCRIPTION, task.getDescription());
                 } else {
-                    query.eq(Task.DESCRIPTION, taskLook.getDescription());
+                    query.eq(Task.DESCRIPTION, task.getDescription());
                     eqDone = true;
                 }
             }
-            if (taskLook.getAssignedId() != null) {
+            if (task.getAssignedId() != null) {
                 if (eqDone) {
-                    query.and().eq(Task.ASSIGNEDID, taskLook.getAssignedId());
+                    query.and().eq(Task.ASSIGNEDID, task.getAssignedId());
                 } else {
-                    query.eq(Task.ASSIGNEDID, taskLook.getAssignedId());
+                    query.eq(Task.ASSIGNEDID, task.getAssignedId());
                     eqDone = true;
                 }
             }
-            if (taskLook.getOwnerId() != null) {
+            if (task.getOwnerId() != null) {
                 if (eqDone) {
-                    query.and().eq(Task.OWNERID, taskLook.getOwnerId());
+                    query.and().eq(Task.OWNERID, task.getOwnerId());
                 } else {
-                    query.eq(Task.OWNERID, taskLook.getOwnerId());
+                    query.eq(Task.OWNERID, task.getOwnerId());
                     eqDone = true;
                 }
             }
-            if (taskLook.getPriority() != null) {
+            if (task.getPriority() != null) {
                 if (eqDone) {
-                    query.and().eq(Task.PRIORITY, taskLook.getPriority());
+                    query.and().eq(Task.PRIORITY, task.getPriority());
                 } else {
-                    query.eq(Task.PRIORITY, taskLook.getPriority());
+                    query.eq(Task.PRIORITY, task.getPriority());
                     eqDone = true;
                 }
             }
-            if (taskLook.getStartDate() != null) {
+            if (task.getStartDate() != null) {
                 if (eqDone) {
-                    query.and().eq(Task.STARTDATE, taskLook.getStartDate());
+                    query.and().eq(Task.STARTDATE, task.getStartDate());
                 } else {
-                    query.eq(Task.STARTDATE, taskLook.getStartDate());
+                    query.eq(Task.STARTDATE, task.getStartDate());
                     eqDone = true;
                 }
             }
-            if (taskLook.getStatus() != null) {
+            if (task.getStatus() != null) {
                 if (eqDone) {
-                    query.and().eq(Task.STATUS, taskLook.getStatus());
+                    query.and().eq(Task.STATUS, task.getStatus());
                 } else {
-                    query.eq(Task.STATUS, taskLook.getStatus());
+                    query.eq(Task.STATUS, task.getStatus());
                     eqDone = true;
                 }
             }
-            if (taskLook.getTimeEstimate() != null) {
+            if (task.getTimeEstimate() != null) {
                 if (eqDone) {
-                    query.and().eq(Task.TIMEESTIMATE, taskLook.getTimeEstimate());
+                    query.and().eq(Task.TIMEESTIMATE, task.getTimeEstimate());
                 } else {
-                    query.eq(Task.TIMEESTIMATE, taskLook.getTimeEstimate());
+                    query.eq(Task.TIMEESTIMATE, task.getTimeEstimate());
                     eqDone = true;
                 }
             }

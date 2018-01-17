@@ -91,7 +91,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
     @java.lang.Override
     public List<TaskLook> searchTaskByLook(TaskLook taskLook) throws TaskContainerException {
         try {
-            return TaskUtils.transformTaskList(queryManager.searchTask(taskLook));
+            return TaskUtils.transformTaskList(queryManager.searchTask(TaskUtils.transformTaskLook(taskLook)));
         } catch (SQLException e) {
             throw new TaskContainerException(e);
         } catch (IOException e) {
