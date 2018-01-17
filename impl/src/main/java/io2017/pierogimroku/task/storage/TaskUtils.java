@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TaskUtils {
+
+    private TaskUtils(){}
+
     public static Task transformTaskLook(TaskLook taskLook){
         Task t = new Task();
         t.setId(taskLook.getId());
