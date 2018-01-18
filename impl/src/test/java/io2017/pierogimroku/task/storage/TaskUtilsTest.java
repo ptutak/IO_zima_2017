@@ -45,7 +45,7 @@ public class TaskUtilsTest {
         task.setPriority(4);
         task.setTimeEstimate(5);
         task.setStartDate(new Date(2015,10,20));
-        task.setStatus(TaskLook.Status.ASSIGNED);
+        task.setStatus(Task.Status.ASSIGNED);
 
         //when
         TaskLook taskLook = TaskUtils.transformTask(task);

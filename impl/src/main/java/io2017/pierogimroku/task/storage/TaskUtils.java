@@ -19,7 +19,28 @@ public class TaskUtils {
         t.setOwnerId(taskLook.getOwnerId());
         t.setPriority(taskLook.getPriority());
         t.setStartDate(taskLook.getStartDate());
-        t.setStatus(taskLook.getStatus());
+        TaskLook.Status status=taskLook.getStatus();
+        if (status!=null)
+            switch(status){
+                case NEW:
+                    t.setStatus(Task.Status.NEW);
+                    break;
+                case FINISHED:
+                    t.setStatus(Task.Status.FINISHED);
+                    break;
+                case ASSIGNED:
+                    t.setStatus(Task.Status.ASSIGNED);
+                    break;
+                case UNDER_IMPLEMENTATION:
+                    t.setStatus(Task.Status.UNDER_IMPLEMENTATION);
+                    break;
+                case IN_REVIEW:
+                    t.setStatus(Task.Status.IN_REVIEW);
+                    break;
+            }
+        else
+            t.setStatus(null);
+
         t.setTimeEstimate(taskLook.getTimeEstimate());
         return t;
     }
@@ -35,7 +56,29 @@ public class TaskUtils {
                 task.getTimeEstimate(),
                 task.getPriority()
         );
-        taskLook.setStatus(task.getStatus());
+
+        Task.Status status=task.getStatus();
+
+        if (status!=null)
+            switch(status){
+                case NEW:
+                    taskLook.setStatus(TaskLook.Status.NEW);
+                    break;
+                case FINISHED:
+                    taskLook.setStatus(TaskLook.Status.FINISHED);
+                    break;
+                case ASSIGNED:
+                    taskLook.setStatus(TaskLook.Status.ASSIGNED);
+                    break;
+                case UNDER_IMPLEMENTATION:
+                    taskLook.setStatus(TaskLook.Status.UNDER_IMPLEMENTATION);
+                    break;
+                case IN_REVIEW:
+                    taskLook.setStatus(TaskLook.Status.IN_REVIEW);
+                    break;
+            }
+        else
+            taskLook.setStatus(null);
 
         return taskLook;
     }

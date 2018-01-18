@@ -7,6 +7,10 @@ import io2017.pierogimroku.task.api.TaskLook;
 
 @DatabaseTable(tableName = "tasks")
 public class Task {
+    public enum Status{
+        NEW,FINISHED,ASSIGNED,IN_REVIEW,UNDER_IMPLEMENTATION
+    }
+
     public static final String ID = "id";
     @DatabaseField(columnName = ID, generatedId=true)
     private Integer id;
@@ -41,7 +45,7 @@ public class Task {
 
     public static final String STATUS = "status";
     @DatabaseField(columnName = STATUS)
-    private TaskLook.Status status;
+    private Status status;
 
     public Task() {}
 
@@ -109,11 +113,11 @@ public class Task {
         this.priority = priority;
     }
 
-    public TaskLook.Status getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(TaskLook.Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
     @Override
