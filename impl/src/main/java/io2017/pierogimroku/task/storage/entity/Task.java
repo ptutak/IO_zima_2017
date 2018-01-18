@@ -3,7 +3,6 @@ package io2017.pierogimroku.task.storage.entity;
 import java.util.Date;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import io2017.pierogimroku.task.api.TaskLook;
 
 @DatabaseTable(tableName = "tasks")
 public class Task {
