@@ -402,6 +402,7 @@ public class QueryManagerTest {
     }
     @Test
     public void testGetAll() throws IOException, SQLException {
+       // QueryManager manager = new QueryManager("build/tmp/addTaskTest3k");
         Task a = new Task();
         a.setName("TaskName");
         int id = manager.addTask(a);

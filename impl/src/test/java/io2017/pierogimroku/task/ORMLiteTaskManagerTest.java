@@ -399,7 +399,7 @@ public class ORMLiteTaskManagerTest {
     }
     @Test
     public void testGetAll() throws TaskContainerException, TaskNotFoundException {
-        ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
+       // ORMLiteTaskManager manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
 
         TaskLook a = new TaskLook();
         a.setName("TaskName");
