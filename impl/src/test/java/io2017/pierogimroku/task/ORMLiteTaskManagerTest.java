@@ -25,7 +25,7 @@ public class ORMLiteTaskManagerTest {
     }
 
     @Test
-    public void testIfIdIsCorrectylSetAfterAdd(){
+    public void testIfIdIsCorrectlySetAfterAdd(){
         TaskLook a = new TaskLook();
         a.setName("TaskName");
         int id = manager.addTask(a);

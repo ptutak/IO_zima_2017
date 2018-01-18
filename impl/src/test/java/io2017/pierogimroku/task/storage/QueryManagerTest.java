@@ -28,7 +28,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIfIdIsCorrectylSetAfterAdd() throws IOException, SQLException {
+    public void testIfIdIsCorrectlySetAfterAdd() throws IOException, SQLException {
         Task a = new Task();
         a.setName("TaskName");
         int id = manager.addTask(a);
