@@ -1,8 +1,5 @@
 package io2017.pierogimroku.task.storage;
 
-import io2017.pierogimroku.task.api.TaskContainerException;
-import io2017.pierogimroku.task.api.TaskLook;
-import io2017.pierogimroku.task.api.TaskNotFoundException;
 import io2017.pierogimroku.task.storage.entity.Task;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +28,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIfIdIsCorrectylSetAfterAdd() throws TaskContainerException, TaskNotFoundException, IOException, SQLException {
+    public void testIfIdIsCorrectylSetAfterAdd() throws IOException, SQLException {
         Task a = new Task();
         a.setName("TaskName");
         int id = manager.addTask(a);
@@ -39,7 +36,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testAddAndRemoveTask() throws TaskContainerException, TaskNotFoundException, IOException, SQLException {
+    public void testAddAndRemoveTask() throws IOException, SQLException {
 
         Task a = new Task();
         a.setName("TaskName");
@@ -54,7 +51,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIsIdSet() throws TaskNotFoundException, IOException, SQLException {
+    public void testIsIdSet() throws IOException, SQLException {
 
         Task a = new Task();
         a.setName("TestName");
@@ -69,7 +66,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIsNameCorrect() throws TaskNotFoundException, IOException, SQLException {
+    public void testIsNameCorrect() throws IOException, SQLException {
 
         Task a = new Task();
         a.setName("TestName");
@@ -85,7 +82,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIsDescriptionCorrect() throws TaskNotFoundException, IOException, SQLException {
+    public void testIsDescriptionCorrect() throws IOException, SQLException {
 
         Task a = new Task();
         a.setName("TestName");
@@ -102,7 +99,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIsOwnerIdCorrect() throws TaskNotFoundException, IOException, SQLException {
+    public void testIsOwnerIdCorrect() throws IOException, SQLException {
 
         Task a = new Task();
         a.setName("TestName");
@@ -119,7 +116,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIsAssignedIdCorrect() throws TaskNotFoundException, IOException, SQLException {
+    public void testIsAssignedIdCorrect() throws IOException, SQLException {
         Task a = new Task();
         a.setName("TestName");
         a.setAssignedId(30);
@@ -135,7 +132,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIsStartDateCorrect() throws TaskNotFoundException, ParseException, IOException, SQLException {
+    public void testIsStartDateCorrect() throws ParseException, IOException, SQLException {
         Task a = new Task();
         String oldstring = "2011-01-18";
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(oldstring);
@@ -154,7 +151,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIsTimeEstimateCorrect() throws TaskNotFoundException, IOException, SQLException {
+    public void testIsTimeEstimateCorrect() throws IOException, SQLException {
         Task a = new Task();
         a.setName("TestName");
         a.setTimeEstimate(30);
@@ -171,7 +168,7 @@ public class QueryManagerTest {
 
 
     @Test
-    public void testIsStatusCorrect() throws TaskNotFoundException, IOException, SQLException {
+    public void testIsStatusCorrect() throws IOException, SQLException {
         Task a = new Task();
         a.setName("TaskName");
         a.setStatus(Task.Status.FINISHED);
@@ -187,7 +184,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testIsPriorityCorrect() throws TaskNotFoundException, IOException, SQLException {
+    public void testIsPriorityCorrect() throws IOException, SQLException {
         Task a = new Task();
         a.setName("TaskName");
         a.setPriority(2);
@@ -203,7 +200,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testEditTask() throws TaskContainerException, TaskNotFoundException, ParseException, IOException, SQLException {
+    public void testEditTask() throws ParseException, IOException, SQLException {
         System.out.println("\n\n\n testEditTask \n\n\n");
 
         String oldstring = "2011-01-18";
@@ -261,7 +258,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testAssignedToTask() throws TaskNotFoundException, IOException, SQLException {
+    public void testAssignedToTask() throws IOException, SQLException {
         System.out.println("\n\n\n testAssignedToTask \n\n\n");
 
         Task a = new Task();
@@ -290,7 +287,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testSearchByLook() throws TaskNotFoundException, IOException, SQLException {
+    public void testSearchByLook() throws IOException, SQLException {
         System.out.println("\n\n\n testSearchByLook \n\n\n");
         Task a = new Task();
         Task b = new Task();
@@ -348,7 +345,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testSearchByAssigned() throws TaskNotFoundException, IOException, SQLException {
+    public void testSearchByAssigned() throws IOException, SQLException {
         System.out.println("\n\n\n testSearchByAssigned \n\n\n");
 
         Task a = new Task();
@@ -376,7 +373,7 @@ public class QueryManagerTest {
         manager.removeTask(manager.searchTask(b).get(0));
     }
     @Test
-    public void testSearchByOwner() throws TaskNotFoundException, IOException, SQLException {
+    public void testSearchByOwner() throws IOException, SQLException {
         System.out.println("\n\n\n testSearchByOwner \n\n\n");
 
         Task a = new Task();
@@ -404,7 +401,7 @@ public class QueryManagerTest {
         manager.removeTask(manager.searchTask(b).get(0));
     }
     @Test
-    public void testGetAll() throws TaskContainerException, TaskNotFoundException, IOException, SQLException {
+    public void testGetAll() throws IOException, SQLException {
         Task a = new Task();
         a.setName("TaskName");
         int id = manager.addTask(a);
@@ -417,7 +414,7 @@ public class QueryManagerTest {
     }
 
     @Test
-    public void testSearchByPhrase() throws TaskNotFoundException, TaskContainerException, IOException, SQLException {
+    public void testSearchByPhrase() throws IOException, SQLException {
         Task a = new Task();
         Task b = new Task();
 
