@@ -222,7 +222,7 @@ public class TaskLook {
         this.name=name;
         this.ownerId=ownerId;
         this.description=null;
-        this.startDate=new Date();
+        this.startDate=null;
         this.timeEstimate=null;
         this.assignedId=null;
         this.status=Status.NEW;
