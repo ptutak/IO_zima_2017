@@ -1,6 +1,7 @@
 package io2017.pierogimroku.task.storage.entity;
 
 import io2017.pierogimroku.task.api.TaskLook;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Date;
@@ -66,16 +67,10 @@ public class TaskLookTest
     @Test
     public void testTaskLookConstructorNameOwnerId()
     {
-        Integer id=5;
         String name="Nazwa";
-        String description="Opis";
         Integer ownerId=2;
-        Integer assignedId=1;
-        Date startDate=new Date(10);
-        Integer timeEstimate=100;
-        Integer priority=1;
-        TaskLook.Status status=TaskLook.Status.FINISHED;
         TaskLook taskLook = new TaskLook(name,ownerId);
+        Date startDate=taskLook.getStartDate();
 
 
         assertTrue(taskLook.getId()==null);
@@ -83,7 +78,7 @@ public class TaskLookTest
         assertTrue(taskLook.getDescription()==null);
         assertTrue(taskLook.getOwnerId()==ownerId);
         assertTrue(taskLook.getAssignedId()==null);
-        assertTrue(taskLook.getStartDate()==null);
+        assertTrue(taskLook.getStartDate()==startDate);
         assertTrue(taskLook.getTimeEstimate()==null);
         assertTrue(taskLook.getPriority()==null);
         assertTrue(taskLook.getStatus()== TaskLook.Status.NEW);
