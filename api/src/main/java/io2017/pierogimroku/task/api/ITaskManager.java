@@ -44,6 +44,7 @@ public interface ITaskManager {
     void assignToTask(TaskLook taskLook) throws TaskContainerException, TaskNotFoundException;
 
     /**
+     * Searches and returns list of all task in storage
      * @return list of all tasks, list is empty if no task were found
      * @throws TaskContainerException on failure
      */

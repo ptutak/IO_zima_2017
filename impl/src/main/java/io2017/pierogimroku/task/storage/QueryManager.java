@@ -3,12 +3,11 @@ package io2017.pierogimroku.task.storage;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
-import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
-import io2017.pierogimroku.task.api.TaskLook;
+import io2017.pierogimroku.task.api.TaskNotFoundException;
 import io2017.pierogimroku.task.storage.entity.Task;
 
 import java.io.IOException;
@@ -181,18 +180,24 @@ public class QueryManager {
         return task.getId();
     }
 
-    public void removeTask(Task task) throws SQLException, IOException {
-        taskDao.delete(task);
+    public void removeTask(Task task) throws SQLException, IOException, TaskNotFoundException {
+        if(taskDao.delete(task) == 0){
+            throw new TaskNotFoundException();
+        }
     }
 
-    public void editTask(Task task) throws SQLException, IOException {
-        taskDao.update(task);
+    public void editTask(Task task) throws SQLException, IOException, TaskNotFoundException {
+        if(taskDao.update(task) == 0){
+            throw new TaskNotFoundException();
+        }
     }
 
-    public void assignToTask(Task task) throws SQLException, IOException{
+    public void assignToTask(Task task) throws SQLException, IOException, TaskNotFoundException {
         Task current = taskDao.queryForId(task.getId());
         current.setAssignedId(task.getAssignedId());
-        taskDao.update(current);
+        if(taskDao.update(current) == 0){
+            throw new TaskNotFoundException();
+        }
     }
 
     @Override

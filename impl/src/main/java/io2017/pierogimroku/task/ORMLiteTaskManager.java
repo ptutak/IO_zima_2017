@@ -9,25 +9,20 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ORMLiteTaskManager implements ITaskManager, ITaskView {
-    private final String databaseName = "taskdatabase";
-    private String tempDatabaseName=null;
+    public static final String DATABASE_NAME = "taskdatabase";
     private QueryManager queryManager;
 
 
-    public ORMLiteTaskManager() throws TaskContainerException{
-        try {
-            queryManager = new QueryManager(databaseName);
-        } catch (SQLException e) {
-            throw new TaskContainerException(e);
-        }
-    }
     public ORMLiteTaskManager(String databaseName)throws TaskContainerException{
         try {
             queryManager = new QueryManager(databaseName);
-            this.tempDatabaseName=databaseName;
         } catch(SQLException e) {
             throw new TaskContainerException(e);
         }
+    }
+
+    public ORMLiteTaskManager() throws TaskContainerException{
+        this(DATABASE_NAME);
     }
 
     @Override
@@ -49,7 +44,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
         try {
             queryManager.removeTask(TaskUtils.transformTaskLook(taskLook));
         } catch (SQLException e) {
-            throw new TaskNotFoundException(e);
+            throw new TaskContainerException(e);
         } catch (IOException e) {
             throw new TaskContainerException(e);
         }
@@ -60,7 +55,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
         try {
             queryManager.editTask(TaskUtils.transformTaskLook(taskLook));
         } catch (SQLException e) {
-            throw new TaskNotFoundException(e);
+            throw new TaskContainerException(e);
         } catch (IOException e) {
             throw new TaskContainerException(e);
         }
@@ -71,7 +66,7 @@ public class ORMLiteTaskManager implements ITaskManager, ITaskView {
         try {
             queryManager.assignToTask(TaskUtils.transformTaskLook(taskLook));
         } catch (SQLException e) {
-            throw new TaskNotFoundException(e);
+            throw new TaskContainerException(e);
         } catch (IOException e) {
             throw new TaskContainerException(e);
         }

@@ -44,6 +44,7 @@ public interface ITaskView {
     public List<TaskLook> searchTaskByOwnerEmployee(int employeeId) throws TaskContainerException;
 
     /**
+     * Searches and returns list of all task in storage
      * @return list of all tasks, list is empty if no task were found
      * @throws TaskContainerException on failure
      */

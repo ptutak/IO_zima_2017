@@ -1,13 +1,15 @@
 package io2017.pierogimroku.task;
 
-import io2017.pierogimroku.task.ORMLiteTaskManager;
 import io2017.pierogimroku.task.api.TaskContainerException;
 import io2017.pierogimroku.task.api.TaskLook;
 import io2017.pierogimroku.task.api.TaskNotFoundException;
 
+import io2017.pierogimroku.task.storage.entity.Task;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,10 +20,54 @@ import static org.junit.Assert.*;
 
 public class ORMLiteTaskManagerTest {
     private ORMLiteTaskManager manager;
+    private static final String TEST_DATABASE_NAME = "build/tmp/ORMLiteTaskManagerTest.db";
 
     @Before
     public void setup(){
-        manager = new ORMLiteTaskManager("build/tmp/addTaskTest1k");
+        manager = new ORMLiteTaskManager(TEST_DATABASE_NAME);
+    }
+
+    @Test
+    public void testIfExceptionThrownOnNotExistingTaskWhenEdit() throws IOException, SQLException {
+        TaskLook a = new TaskLook();
+        a.setId(1);
+        boolean thrown = false;
+        try{
+            manager.removeTask(a);
+            manager.editTask(a);
+        } catch (TaskNotFoundException e) {
+            thrown = true;
+        }
+        assertTrue(thrown);
+    }
+
+    @Test
+    public void testIfExceptionThrownOnNotExistingTaskWhenAssignToTask() throws IOException, SQLException {
+        TaskLook a = new TaskLook();
+        a.setId(1);
+        a.setAssignedId(6);
+        boolean thrown = false;
+        try{
+            manager.removeTask(a);
+            manager.assignToTask(a);
+        } catch (TaskNotFoundException e) {
+            thrown = true;
+        }
+        assertTrue(thrown);
+    }
+    @Test
+    public void testIfExceptionThrownOnNotExistingTaskWhenRemove() throws IOException, SQLException {
+        TaskLook a = new TaskLook();
+        a.setId(1);
+        a.setAssignedId(6);
+        boolean thrown = false;
+        try{
+            manager.removeTask(a);
+            manager.removeTask(a);
+        } catch (TaskNotFoundException e) {
+            thrown = true;
+        }
+        assertTrue(thrown);
     }
 
     @Test
