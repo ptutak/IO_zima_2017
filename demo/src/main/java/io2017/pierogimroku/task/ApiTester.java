@@ -117,7 +117,10 @@ public class ApiTester {
         System.out.println("3 - Owner Id");
         System.out.println("4 - Assigned Id");
         System.out.println("5 - Owner Id and Assigned Id");
+        System.out.println("6 - Search phrase");
         int choice = Integer.parseInt(stdin.nextLine());
+        Integer id=null;
+        String phrase=null;
         TaskLook searchTask=new TaskLook();
         System.out.println("?Query:");
         switch (choice){
@@ -128,10 +131,10 @@ public class ApiTester {
                 searchTask.setName(stdin.nextLine());
                 break;
             case 3:
-                searchTask.setOwnerId(Integer.parseInt(stdin.nextLine()));
+                id=Integer.parseInt(stdin.nextLine());
                 break;
             case 4 :
-                searchTask.setAssignedId(Integer.parseInt(stdin.nextLine()));
+                id=Integer.parseInt(stdin.nextLine());
                 break;
             case 5:
                 System.out.println("Owner Id:");
@@ -139,8 +142,22 @@ public class ApiTester {
                 System.out.println("Assigned Id:");
                 searchTask.setAssignedId(Integer.parseInt(stdin.nextLine()));
                 break;
+            case 6:
+                phrase=stdin.nextLine();
+                break;
         }
-        List<TaskLook> list=tm.searchTaskByLook(searchTask);
+        List<TaskLook> list=null;
+        if (id!=null){
+            if (choice==3)
+                list=tm.searchTaskByOwnerEmployee(id);
+            else
+                list=tm.searchTaskByAssignedEmployee(id);
+        }
+        else if (phrase!=null) {
+            list=tm.search(phrase);
+        }
+        else
+            list=tm.searchTaskByLook(searchTask);
         for (TaskLook look : list){
             System.out.println(look);
         }
