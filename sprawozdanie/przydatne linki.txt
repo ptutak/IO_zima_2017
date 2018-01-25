@@ -1,3 +1,11 @@
+JUnit:
 http://junit.org/junit5/docs/current/user-guide/
-https://gradle.org/docs/ dla wersji 3.3
+
+Gradle:
+https://gradle.org/docs/
+
+Java:
 https://docs.oracle.com/javase/7/docs/api/
+
+ORMLite:
+http://ormlite.com/javadoc/ormlite-core/doc-files/ormlite.html
